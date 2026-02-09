@@ -54,9 +54,9 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Prawne</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><button onClick={() => alert('Polityka Prywatności w przygotowaniu')} className="hover:text-primary transition-colors cursor-pointer">Polityka Prywatności</button></li>
-              <li><button onClick={() => alert('Regulamin w przygotowaniu')} className="hover:text-primary transition-colors cursor-pointer">Regulamin</button></li>
-              <li><button onClick={() => alert('RODO w przygotowaniu')} className="hover:text-primary transition-colors cursor-pointer">RODO</button></li>
+              <li><a href="#privacy" className="hover:text-primary transition-colors cursor-pointer">Polityka Prywatności</a></li>
+              <li><a href="#terms" className="hover:text-primary transition-colors cursor-pointer">Regulamin</a></li>
+              <li><button onClick={() => alert('RODO: Administratorem danych jest Adam Parszewski. Dane przetwarzane są wyłącznie w celach biznesowych.')} className="hover:text-primary transition-colors cursor-pointer">RODO</button></li>
             </ul>
           </div>
 
