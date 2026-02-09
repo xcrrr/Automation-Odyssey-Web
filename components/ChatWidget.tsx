@@ -38,6 +38,11 @@ export const ChatWidget: React.FC = () => {
               height: 0 !important;
               pointer-events: none !important;
             }
+            /* Style adjustment for the widget button to match high-end theme */
+            button[class*="convai-widget-button"] {
+              box-shadow: 0 0 20px rgba(0, 212, 255, 0.4) !important;
+              border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
           `;
           widget.shadowRoot.appendChild(style);
         }

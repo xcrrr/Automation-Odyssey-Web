@@ -108,13 +108,13 @@ export const Hero: React.FC = () => {
             </span>{" "}
             <br className="sm:hidden" />
             <span className="inline-block animate-reveal" style={{ animationDelay: '200ms' }}>Która</span>{" "}
-            <span className="inline-block animate-reveal" style={{ animationDelay: '300ms' }}>Działa</span>{" "}
+            <span className="inline-block animate-reveal" style={{ animationDelay: '300ms' }}>Uwalnia</span>{" "}
             <span className="inline-block animate-reveal" style={{ animationDelay: '700ms' }}>
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">24/7</span>
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">Czas</span>
             </span>
           </h1>
-          <p className="text-base md:text-xl text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed animate-reveal px-2 md:px-0" style={{ animationDelay: '800ms' }}>
-            Voice boty i chatboty AI, które odbierają telefony, rezerwują spotkania i odpowiadają klientom, gdy Ty śpisz.
+          <p className="text-base md:text-xl text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed animate-reveal px-2 md:px-0 font-light" style={{ animationDelay: '800ms' }}>
+            Wykorzystaj moc konwersacyjnej sztucznej inteligencji. Tworzymy voiceboty i systemy AI, które transformują obsługę klienta w zautomatyzowane centrum zysku.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-reveal" style={{ animationDelay: '1000ms' }}>
