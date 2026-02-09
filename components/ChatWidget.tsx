@@ -2,66 +2,36 @@ import React, { useEffect } from 'react';
 
 export const ChatWidget: React.FC = () => {
   useEffect(() => {
-    // Check if script already exists to avoid duplicates
-    const scriptSrc = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+    // Vapi Widget Script
+    const scriptSrc = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/vapi-widget.js";
     if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
-      // Load the ElevenLabs script dynamically
       const script = document.createElement('script');
       script.src = scriptSrc;
+      script.defer = true;
       script.async = true;
-      script.type = "text/javascript";
       document.body.appendChild(script);
+
+      script.onload = () => {
+        (window as any).vapiConfig = {
+          apiKey: "4e62cdba-03d8-4557-849f-2395f5c5799b", // Public Token
+          assistantId: "199da0a9-a008-4f63-8ac4-e2601b5f7830", // Odyssey Assistant
+          config: {
+            button: {
+              position: "bottom-right",
+              offset: "24px",
+              width: "64px",
+              height: "64px",
+              color: "#00d4ff",
+            }
+          }
+        };
+      };
     }
-
-    // Attempt to hide branding inside shadow DOM
-    // We check periodically because the widget might re-render or load lazily
-    const hideBranding = () => {
-      const widget = document.querySelector('elevenlabs-convai');
-      if (widget && widget.shadowRoot) {
-        const styleId = 'elevenlabs-branding-hide';
-        if (!widget.shadowRoot.getElementById(styleId)) {
-          const style = document.createElement('style');
-          style.id = styleId;
-          // Target common branding elements. 
-          // Note: Specific class names might change, so we try generic attribute selectors where possible
-          // or generic styling for the bottom area if distinct.
-          // Based on the user image "Powered by ElevenLabs Agents", this is often a small text or link at the bottom.
-          style.textContent = `
-            a[href*="elevenlabs.io"],
-            .powered-by,
-            [class*="powered-by"],
-            div[style*="font-size: 10px"],
-            div:has(> a[href*="elevenlabs.io"]) {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-              height: 0 !important;
-              pointer-events: none !important;
-            }
-            /* Style adjustment for the widget button to match high-end theme */
-            button[class*="convai-widget-button"] {
-              box-shadow: 0 0 20px rgba(0, 212, 255, 0.4) !important;
-              border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            }
-          `;
-          widget.shadowRoot.appendChild(style);
-        }
-      }
-    };
-
-    const intervalId = setInterval(hideBranding, 1000);
-
-    // Initial attempt
-    setTimeout(hideBranding, 2000);
-
-    return () => clearInterval(intervalId);
   }, []);
 
-  const ConvaiWidget = 'elevenlabs-convai' as any;
-
   return (
-    <div className="hidden md:block fixed bottom-6 right-6 z-[100]">
-      <ConvaiWidget agent-id="agent_3501kdv292srfvrvjy3qx9v34409"></ConvaiWidget>
+    <div className="hidden md:block">
+      {/* Vapi Widget will mount itself to the body */}
     </div>
   );
 };
