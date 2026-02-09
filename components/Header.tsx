@@ -56,7 +56,13 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2 group cursor-pointer shrink-0" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="flex items-center gap-2 group cursor-pointer shrink-0" onClick={() => {
+            if (window.location.hash === '#privacy' || window.location.hash === '#terms') {
+              window.location.hash = '';
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}>
             <div className={`p-1 rounded-lg transition-colors duration-300 ${isScrolled ? 'bg-primary/10' : 'bg-transparent'}`}>
                 <Compass className={`h-5 w-5 md:h-8 md:w-8 transition-all duration-500 group-hover:rotate-45 ${isScrolled ? 'text-primary' : 'text-white'}`} />
             </div>
