@@ -58,7 +58,7 @@ export const HowItWorks: React.FC = () => {
           </div>
           
           {/* Timeline Line - Mobile (Left Side) */}
-          <div className="md:hidden absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30"></div>
+          <div className="md:hidden absolute left-[31px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30"></div>
 
           <div className="space-y-8 md:space-y-0 relative">
             {steps.map((step, index) => (
@@ -87,10 +87,10 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Center Icon */}
-                <div className="absolute left-1 md:left-1/2 md:transform md:-translate-x-1/2 mt-6 md:mt-0 z-20 flex-shrink-0">
-                   <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-dark border-2 border-dark-lighter shadow-[0_0_0_1px_rgba(255,255,255,0.1)] flex items-center justify-center group hover:scale-110 transition-transform duration-300">
+                <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 mt-6 md:mt-0 z-20 flex-shrink-0">
+                   <div className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-dark border-2 border-dark-lighter shadow-[0_0_0_1px_rgba(255,255,255,0.1)] flex items-center justify-center group hover:scale-110 transition-transform duration-300">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-sm opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                      <step.Icon className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-primary transition-colors duration-300 relative z-10" />
+                      <step.Icon className="w-4 h-4 md:w-6 md:h-6 text-white group-hover:text-primary transition-colors duration-300 relative z-10" />
                    </div>
                 </div>
 

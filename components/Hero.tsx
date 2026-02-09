@@ -94,10 +94,11 @@ export const Hero: React.FC = () => {
               Twoja Przewaga
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[1.1] md:leading-tight mb-6 tracking-tight">
             <span className="inline-block animate-reveal" style={{ animationDelay: '100ms' }}>
               <span className="animate-text-shine">Automatyzacja</span>,
             </span>{" "}
+            <br className="sm:hidden" />
             <span className="inline-block animate-reveal" style={{ animationDelay: '200ms' }}>Która</span>{" "}
             <span className="inline-block animate-reveal" style={{ animationDelay: '300ms' }}>Działa</span>{" "}
             <span className="inline-block animate-reveal" style={{ animationDelay: '700ms' }}>
