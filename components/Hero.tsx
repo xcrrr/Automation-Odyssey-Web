@@ -99,7 +99,7 @@ export const Hero: React.FC = () => {
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm animate-reveal shadow-[0_0_15px_rgba(0,212,255,0.3)]" style={{ animationDelay: '0ms' }}>
             <span className="text-primary text-xs md:text-sm font-bold tracking-widest uppercase flex items-center gap-2">
               <Cpu size={14} className="animate-pulse" />
-              Twoja Przewaga
+              Twoja Przewaga Nad Konkurencją
             </span>
           </div>
           <h1 className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[1.15] md:leading-tight mb-6 tracking-tight px-1">
