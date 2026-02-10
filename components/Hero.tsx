@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Calendar, Bot, Activity, TrendingDown, TrendingUp, Cpu, ShieldCheck, Rocket } from 'lucide-react';
+import { Calendar, Bot, Activity, TrendingDown, TrendingUp, Cpu, ShieldCheck, Rocket, Phone } from 'lucide-react';
 import { WavyDivider } from './WavyDivider';
 
 export const Hero: React.FC = () => {
@@ -130,9 +130,18 @@ export const Hero: React.FC = () => {
               <Calendar size={20} className="relative z-10" />
               <span className="relative z-10">Umów konsultację</span>
             </button>
-            <a href="#features" className="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-lg text-white hover:bg-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2 group cursor-pointer w-full sm:w-auto">
-              Więcej
-              <TrendingUp size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <a 
+              href="tel:+48729086144" 
+              className="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-lg text-white hover:bg-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-3 group cursor-pointer w-full sm:w-auto relative overflow-hidden"
+            >
+              <Phone size={20} className="text-primary group-hover:scale-110 transition-transform" />
+              <span>AI Demo</span>
+              <div className="absolute top-0 right-0 p-1">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+              </div>
             </a>
           </div>
 
