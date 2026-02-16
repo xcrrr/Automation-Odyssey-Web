@@ -1,77 +1,102 @@
 import React from 'react';
 import { Clock, TrendingUp, Users, PiggyBank } from 'lucide-react';
 import { Feature } from '../types';
-import { RevealOnScroll } from './RevealOnScroll';
 
 const features: Feature[] = [
   {
     id: '1',
     title: 'Dostępność 24/7',
-    description: 'Twoja firma nigdy nie śpi. Boty odbierają telefony i odpisują na wiadomości o każdej porze dnia i nocy, w święta i weekendy.',
+    description: 'Boty odbierają telefony i odpisują o każdej porze dnia i nocy. Twoja firma pracuje, gdy Ty śpisz.',
     Icon: Clock,
   },
   {
     id: '2',
     title: 'Redukcja Kosztów',
-    description: 'Zatrudnienie pracownika to pensja, ZUS, urlopy i sprzęt. Bot pracuje za ułamek tej kwoty, nie choruje i nie bierze wolnego.',
+    description: 'Brak składek ZUS, urlopów i zwolnień lekarskich. Bot to pracownik, który kosztuje ułamek pensji.',
     Icon: PiggyBank,
   },
   {
     id: '3',
-    title: 'Natychmiastowa Skalowalność',
-    description: 'Niezależnie czy dzwoni 5 czy 500 klientów jednocześnie – bot obsłuży każdego z nich bez czasu oczekiwania na linii.',
+    title: 'Skalowanie w Sekundy',
+    description: '5 czy 500 klientów jednocześnie? To nie ma znaczenia. Obsłużymy każdego bez sekundy czekania.',
     Icon: Users,
   },
   {
     id: '4',
-    title: 'Wyższa Konwersja',
-    description: 'Każde nieodebrane połączenie to stracony klient. Nasz system "łapie" każdy lead i natychmiast kwalifikuje go do sprzedaży.',
+    title: 'Więcej Sprzedaży',
+    description: 'Każdy nieodebrany telefon to stracony klient. My zmieniamy je w realne, umówione spotkania.',
     Icon: TrendingUp,
   },
 ];
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="py-16 md:py-24 bg-dark-lighter relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
+    <section id="features" className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
+      {/* Dynamic Background Spotlight */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_70%)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 text-white">
-            Dlaczego <span className="text-primary">Warto?</span>
+        <div className="max-w-3xl mb-20 text-center md:text-left mx-auto md:mx-0">
+          <div className="inline-block mb-4 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-bold tracking-[0.3em] uppercase">
+            Przewaga Konkurencyjna
+          </div>
+          <h2 className="text-4xl md:text-7xl font-heading font-bold mb-6 text-white tracking-tighter">
+            Technologia, która <br />
+            <span className="gradient-text">Zarabia Sama.</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">
-            Technologia, która nie tylko usprawnia procesy, ale realnie zwiększa zyski Twojej firmy.
+          <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+            Nie budujemy po prostu botów. Budujemy autonomiczne systemy wzrostu, które eliminują wąskie gardła w Twojej firmie.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {features.map((feature, index) => (
-            <RevealOnScroll key={feature.id} delay={index * 100}>
-              <div className="group glass-card p-6 md:p-8 rounded-2xl transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(0,212,255,0.1)] border-white/5 hover:border-primary/30 h-full flex flex-col items-start text-left relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors duration-500"></div>
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all duration-500 shrink-0">
-                  <feature.Icon className="text-primary w-7 h-7 md:w-8 md:h-8 group-hover:text-white transition-colors" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-[600px]">
+          {/* Bento Card 1 - Main Large */}
+          <div className="md:col-span-2 md:row-span-2 group relative bg-[#0a0a0a] rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_50px_rgba(0,212,255,0.1)] p-8 md:p-12 flex flex-col justify-between">
+             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+             <div className="relative z-10">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 border border-primary/20 group-hover:scale-110 transition-transform duration-500">
+                  <Clock className="text-primary w-8 h-8" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base group-hover:text-gray-300">
-                  {feature.description}
-                </p>
-              </div>
-            </RevealOnScroll>
-          ))}
+                <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{features[0].title}</h3>
+                <p className="text-gray-400 text-lg leading-relaxed font-light">{features[0].description}</p>
+             </div>
+             <div className="relative z-10 mt-8 flex gap-2">
+                {[1, 2, 3, 4, 5, 6].map(i => (
+                  <div key={i} className="h-1 flex-1 bg-white/5 rounded-full overflow-hidden">
+                     <div className="h-full bg-primary/40 animate-pulse" style={{ animationDelay: `${i * 0.2}s`, width: `${30 + Math.random() * 70}%` }}></div>
+                  </div>
+                ))}
+             </div>
+          </div>
+
+          {/* Bento Card 2 - Top Right */}
+          <div className="md:col-span-2 group relative bg-[#0a0a0a] rounded-[2rem] border border-white/5 overflow-hidden transition-all duration-700 hover:border-secondary/40 p-8 flex flex-col md:flex-row items-center gap-8 shadow-xl">
+             <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center border border-secondary/20 shrink-0">
+               <PiggyBank className="text-secondary w-8 h-8" />
+             </div>
+             <div>
+               <h3 className="text-2xl font-bold text-white mb-2">{features[1].title}</h3>
+               <p className="text-gray-400 text-base font-light leading-relaxed">{features[1].description}</p>
+             </div>
+          </div>
+
+          {/* Bento Card 3 - Bottom Right 1 */}
+          <div className="group relative bg-[#0a0a0a] rounded-[2rem] border border-white/5 overflow-hidden transition-all duration-700 hover:border-accent/40 p-8 flex flex-col justify-between">
+             <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 border border-accent/20">
+               <Users className="text-accent w-6 h-6" />
+             </div>
+             <h3 className="text-xl font-bold text-white tracking-tight">{features[2].title}</h3>
+             <p className="text-gray-500 text-sm mt-2">{features[2].description}</p>
+          </div>
+
+          {/* Bento Card 4 - Bottom Right 2 */}
+          <div className="group relative bg-[#0a0a0a] rounded-[2rem] border border-white/5 overflow-hidden transition-all duration-700 hover:border-green-500/40 p-8 flex flex-col justify-between">
+             <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 border border-green-500/20">
+               <TrendingUp className="text-green-500 w-6 h-6" />
+             </div>
+             <h3 className="text-xl font-bold text-white tracking-tight">{features[3].title}</h3>
+             <p className="text-gray-500 text-sm mt-2">{features[3].description}</p>
+          </div>
         </div>
       </div>
     </section>

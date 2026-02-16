@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
     e.preventDefault();
     const element = document.querySelector(targetId);
     if (element) {
-      const headerOffset = 80;
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -41,106 +41,92 @@ export const Header: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'O nas', href: '#features' },
-    { name: 'Jak to działa', href: '#how-it-works' },
+    { name: 'Strategia', href: '#features' },
+    { name: 'Proces', href: '#how-it-works' },
+    { name: 'Cennik', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
   ];
 
   return (
-    <nav 
-      className={`fixed w-full z-50 top-0 left-0 transition-all duration-500 border-b ${
-        isScrolled 
-          ? 'bg-dark/95 backdrop-blur-xl border-primary/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)] py-2' 
-          : 'bg-transparent border-transparent py-4 md:py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2 group cursor-pointer shrink-0" onClick={() => {
-            if (window.location.hash === '#privacy' || window.location.hash === '#terms') {
-              window.location.hash = '';
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}>
-            <div className={`p-1 rounded-lg transition-colors duration-300 ${isScrolled ? 'bg-primary/10' : 'bg-transparent'}`}>
-                <Compass className={`h-5 w-5 md:h-8 md:w-8 transition-all duration-500 group-hover:rotate-45 ${isScrolled ? 'text-primary' : 'text-white'}`} />
+    <div className="fixed w-full z-50 top-0 left-0 px-4 py-4 md:py-6 pointer-events-none">
+      <nav 
+        className={`max-w-6xl mx-auto transition-all duration-500 rounded-3xl pointer-events-auto border
+          ${isScrolled 
+            ? 'bg-[#0a0a0a]/80 backdrop-blur-2xl border-white/10 shadow-2xl py-2 px-6' 
+            : 'bg-transparent border-transparent py-4 px-4'
+          }
+        `}
+      >
+        <div className="flex items-center justify-between h-14">
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-[360deg]">
+                <Compass className="h-6 w-6" />
             </div>
-            <span className={`font-heading font-bold text-base md:text-xl tracking-tight md:tracking-wider transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-white'}`}>
-              Automation Odyssey
+            <span className="font-heading font-black text-xl tracking-tighter text-white">
+              ODYSSEY
             </span>
           </div>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-300 hover:text-primary hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest cursor-pointer"
                 >
                   {link.name}
                 </a>
               ))}
-              <button
-                type="button"
-                onClick={handleBookingClick}
-                data-cal-link="automationodyssey.pl/konsultacja-ai"
-                data-cal-namespace="konsultacja-ai"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
-                className={`text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-pointer ${
-                    isScrolled 
-                    ? 'bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-primary/25' 
-                    : 'bg-white/10 hover:bg-white/20 border border-white/20'
-                }`}
-              >
-                <Calendar size={18} />
-                Umów Rozmowę
-              </button>
             </div>
+            <div className="h-6 w-[1px] bg-white/10 mx-2"></div>
+            <button
+              type="button"
+              onClick={handleBookingClick}
+              className="px-6 py-2.5 bg-white text-black rounded-full text-sm font-black uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-xl"
+            >
+              Konsultacja
+            </button>
           </div>
 
-          <div className="-mr-2 flex md:hidden">
+          <div className="flex md:hidden">
             <button
               onClick={toggleMenu}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none cursor-pointer"
+              className="p-2 text-white hover:bg-white/10 rounded-xl transition-colors"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-xl border-b border-primary/20 transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}>
-        <div className="px-4 py-4 space-y-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="text-gray-300 hover:text-primary hover:bg-white/5 block px-3 py-3 rounded-lg text-base font-medium cursor-pointer transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-2">
-            <button
-                type="button"
-                onClick={() => { handleBookingClick(); setIsMenuOpen(false); }}
-                data-cal-link="automationodyssey.pl/konsultacja-ai"
-                data-cal-namespace="konsultacja-ai"
-                data-cal-config='{"layout":"month_view","theme":"dark"}'
-                className="w-full text-center mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-bold cursor-pointer hover:shadow-lg transition-shadow"
-            >
-                <Calendar size={18} />
-                Umów Rozmowę
-            </button>
+        {/* Mobile Menu */}
+        <div className={`md:hidden absolute top-[calc(100%+1rem)] left-0 w-full px-4 transition-all duration-500 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+          <div className="bg-[#0a0a0a] backdrop-blur-3xl border border-white/10 rounded-[2rem] p-6 shadow-2xl overflow-hidden">
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-gray-400 hover:text-white text-lg font-bold tracking-tight py-2"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="h-[1px] bg-white/5 my-2"></div>
+              <button
+                  type="button"
+                  onClick={() => { handleBookingClick(); setIsMenuOpen(false); }}
+                  className="w-full py-4 bg-white text-black rounded-2xl font-black uppercase tracking-widest"
+              >
+                  Umów Rozmowę
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };

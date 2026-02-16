@@ -1,109 +1,107 @@
 import React from 'react';
-import { Settings, Mic, Link, CheckCircle } from 'lucide-react';
+import { Settings, Mic, Link, CheckCircle, ArrowRight } from 'lucide-react';
 import { Step } from '../types';
-import { WavyDivider } from './WavyDivider';
-import { RevealOnScroll } from './RevealOnScroll';
 
 const steps: Step[] = [
   {
     id: 1,
-    title: 'Analiza i Konfiguracja',
-    description: 'Analizujemy Twoje procesy i tworzymy mapę konwersacji. Otrzymujesz działający prototyp w 48h.',
+    title: 'Blueprint Strategiczny',
+    description: 'Analizujemy wąskie gardła w Twojej firmie i projektujemy logikę agenta. Działający prototyp w 48h.',
     Icon: Settings,
   },
   {
     id: 2,
-    title: 'Voice Design',
-    description: 'Dobieramy idealny głos i ton. Klonujemy Twój głos lub korzystamy z profesjonalnych modeli AI.',
+    title: 'Inżynieria Głosu',
+    description: 'Klonujemy Twój głos lub wybieramy z biblioteki profesjonalnych modeli. Gwarancja 100% naturalności.',
     Icon: Mic,
   },
   {
     id: 3,
-    title: 'Integracja',
-    description: 'Wpinamy bota w Twój system CRM, kalendarz i telefon. Pełna automatyzacja przepływu danych.',
+    title: 'Głęboka Integracja',
+    description: 'Spinamy AI z Twoim CRM, kalendarzem i telefonem. Dane płyną tam, gdzie ich potrzebujesz.',
     Icon: Link,
   },
   {
     id: 4,
-    title: 'Start',
-    description: 'Uruchamiamy system, testujemy i optymalizujemy rozmowy dla maksymalnej skuteczności.',
+    title: 'Dominacja Rynkowa',
+    description: 'Uruchamiamy system i optymalizujemy konwersję. Twoje AI dzwoni, sprzedaje i umawia spotkania.',
     Icon: CheckCircle,
   },
 ];
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-16 md:py-24 bg-dark relative overflow-hidden">
-      {/* Top Divider */}
-      <WavyDivider position="top" fill="#1a1a2e" />
-      
-      {/* Background Elements */}
-      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <section id="how-it-works" className="py-24 md:py-40 bg-[#030303] relative overflow-hidden">
+      {/* Cinematic Background Lines */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-primary via-transparent to-transparent"></div>
+        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-secondary via-transparent to-transparent"></div>
+      </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-6">
-        <div className="text-center mb-12">
-          <div className="inline-block mb-3 px-3 py-1 rounded-full border border-gray-700 bg-gray-800/50 backdrop-blur-sm">
-             <span className="text-gray-300 text-[10px] font-semibold tracking-wide uppercase">Proces Wdrożenia</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
-            Jak To <span className="gradient-text">Działa</span>?
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-24">
+          <h2 className="text-4xl md:text-7xl font-heading font-bold mb-6 text-white tracking-tighter">
+            Proces <span className="gradient-text">Odysei.</span>
           </h2>
+          <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+            Od chaosu manualnych zadań do precyzyjnie naoliwionej machiny AI. Szybko, konkretnie, bez zbędnych pytań.
+          </p>
         </div>
 
-        <div className="relative">
-          {/* Central Line - Desktop */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-800/50">
-             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/50 via-secondary/50 to-transparent opacity-30"></div>
-          </div>
-          
-          {/* Timeline Line - Mobile (Left Side) */}
-          <div className="md:hidden absolute left-[31px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30"></div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <div key={step.id} className="relative group">
+              {/* Connector Arrows for Desktop */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-12 -right-4 z-20">
+                  <ArrowRight size={24} className="text-white/10 group-hover:text-primary transition-colors duration-500" />
+                </div>
+              )}
 
-          <div className="space-y-8 md:space-y-0 relative">
-            {steps.map((step, index) => (
-              <div key={step.id} className={`flex flex-col md:flex-row items-center justify-between md:-my-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+              <div className="relative p-8 rounded-[2.5rem] bg-[#0a0a0a] border border-white/5 transition-all duration-500 hover:border-primary/40 h-full flex flex-col items-center text-center">
+                {/* Step Number Badge */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-dark border border-white/10 flex items-center justify-center">
+                   <span className="text-primary font-black text-xs">0{step.id}</span>
+                </div>
+
+                <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                  <step.Icon size={32} className="text-white" />
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-primary transition-colors">{step.title}</h3>
+                <p className="text-gray-400 font-light leading-relaxed text-base">{step.description}</p>
                 
-                {/* Content Side */}
-                <div className="w-full md:w-[45%] relative group z-10 pl-16 md:pl-0 md:py-6">
-                  <RevealOnScroll delay={index * 100}>
-                    <div className={`
-                      relative p-6 rounded-2xl bg-[#131326] border border-white/5 
-                      hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]
-                      ${index % 2 === 1 ? 'md:text-right' : 'md:text-left'}
-                    `}>
-                      <div className={`flex flex-col mb-2 ${index % 2 === 1 ? 'md:items-end' : 'items-start'}`}>
-                         <span className="text-primary font-bold text-xs tracking-wider uppercase mb-1 opacity-80">Krok 0{step.id}</span>
-                         <h3 className="text-xl font-heading font-bold text-white group-hover:text-primary transition-colors duration-300">
-                          {step.title}
-                        </h3>
-                      </div>
-                      
-                      <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                        {step.description}
-                      </p>
-                    </div>
-                  </RevealOnScroll>
+                {/* Subtle Progress Indicator */}
+                <div className="mt-8 w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                   <div 
+                    className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000 ease-out" 
+                    style={{ width: index === 0 ? '25%' : index === 1 ? '50%' : index === 2 ? '75%' : '100%' }}
+                   ></div>
                 </div>
-
-                {/* Center Icon */}
-                <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 mt-6 md:mt-0 z-20 flex-shrink-0">
-                   <div className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-dark border-2 border-dark-lighter shadow-[0_0_0_1px_rgba(255,255,255,0.1)] flex items-center justify-center group hover:scale-110 transition-transform duration-300">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-sm opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                      <step.Icon className="w-4 h-4 md:w-6 md:h-6 text-white group-hover:text-primary transition-colors duration-300 relative z-10" />
-                   </div>
-                </div>
-
-                {/* Empty Side (Desktop) */}
-                <div className="w-full md:w-[45%] hidden md:block"></div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Action Bar */}
+        <div className="mt-24 p-8 rounded-3xl bg-white/5 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-8 backdrop-blur-xl">
+           <div className="flex items-center gap-6 text-center md:text-left">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                 <Mic className="text-primary animate-pulse" size={20} />
+              </div>
+              <div>
+                 <h4 className="text-xl font-bold text-white">Gotowy na własnego klona AI?</h4>
+                 <p className="text-gray-400 font-light">Sprawdź demo głosu na żywo podczas darmowej rozmowy.</p>
+              </div>
+           </div>
+           <a 
+            href="#pricing" 
+            className="px-10 py-4 bg-white text-black rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl"
+           >
+            Wybierz Plan
+           </a>
         </div>
       </div>
-      
-      {/* Bottom Divider */}
-      <WavyDivider position="bottom" fill="#1a1a2e" />
     </section>
   );
 };
