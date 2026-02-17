@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Phone } from 'lucide-react';
+import { QuantumCore } from './QuantumCore';
 
 export const Hero: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -16,11 +17,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   const handleBookingClick = () => {
-    if (window.Cal) {
-      window.Cal("ui", "open", { calLink: "automationodyssey.pl/konsultacja-ai" });
-    } else {
-      window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
-    }
+    window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
   };
 
   return (
@@ -60,32 +57,9 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Fluid Glass Core */}
-        <div className="relative w-48 h-48 md:w-96 md:h-96 mt-8 md:mt-0">
-           <div 
-            className="w-full h-full relative flex items-center justify-center transition-transform duration-1000 ease-luxury"
-            style={{ transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)` }}
-           >
-              {/* Outer Energy Field */}
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[60px] animate-pulse"></div>
-              
-              {/* The "Nano-Banana" Glass Orb */}
-              <div className="relative w-40 h-40 md:w-80 md:h-80 bg-white/5 backdrop-blur-3xl rounded-full border border-white/20 shadow-[0_0_80px_rgba(255,255,255,0.1)] flex items-center justify-center overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10"></div>
-                 
-                 {/* Inner Floating Elements */}
-                 <div className="relative w-20 h-20 md:w-40 md:h-40 border-2 border-white/40 rounded-full animate-[spin_8s_linear_infinite] flex items-center justify-center">
-                    <div className="w-12 h-12 md:w-24 md:h-24 bg-white rounded-full opacity-80 blur-xl animate-float"></div>
-                 </div>
-                 
-                 {/* Scanning Glow */}
-                 <div className="absolute inset-0 w-full h-px bg-white/30 animate-scan"></div>
-              </div>
-
-              {/* Orbital Rings */}
-              <div className="absolute inset-[-20px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]"></div>
-              <div className="absolute inset-[-40px] border border-white/5 rounded-full animate-[spin_30s_linear_infinite_reverse]"></div>
-           </div>
+        {/* Neural Singularity Core */}
+        <div className="relative mt-8 md:mt-0 flex items-center justify-center">
+           <QuantumCore />
         </div>
       </div>
     </section>
