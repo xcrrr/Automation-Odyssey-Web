@@ -31,4 +31,22 @@ Eliminujemy "ludzkie wąskie gardła" w firmach usługowych. Sprawiamy, że tech
 3. **Podejście "Boutique":** Nie sprzedajemy pudełkowych rozwiązań. Każdy bot przechodzi "test majstra" – musi brzmieć naturalnie dla kogoś z branży.
 
 ---
+---
+## 4. Pakiety Specjalistyczne (Rynek Polski 2026)
+
+### A. Pakiet "Czyste Płatności" (Windykacja AI)
+- Monitorowanie terminów płatności faktur.
+- Automatyczne przypomnienia SMS/Email (prowadzone przez AI).
+- Raporty o statusie zatorów płatniczych.
+
+### B. Pakiet "KSeF Ready" (Dokumentacja AI)
+- Inteligentne skanowanie i kategoryzacja kosztów.
+- Przygotowanie firmy do wejścia obowiązkowego systemu e-faktur.
+- Integracja maila z systemem księgowym.
+
+### C. Pakiet "Szybki Pracownik" (Rekrutacja Fizyczna)
+- Automatyczny screening kandydatów z OLX/Pracuj.pl.
+- Weryfikacja umiejętności przez Voicebota.
+- SMS-owe powiadomienia o gotowych do pracy kandydatach.
+
 *Created by xcrr for Automation Odyssey*
