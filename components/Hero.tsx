@@ -105,7 +105,7 @@ export const Hero: React.FC = () => {
             </span>
           </div>
           
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-bold leading-[1] mb-8 tracking-tighter">
+          <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-bold leading-[1.1] mb-6 tracking-tighter">
             <span className="inline-block animate-reveal text-white" style={{ animationDelay: '100ms' }}>
               Przyszłość
             </span>
@@ -115,50 +115,50 @@ export const Hero: React.FC = () => {
             </span>
           </h1>
           
-          <p className="text-lg md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-reveal font-light tracking-wide" style={{ animationDelay: '600ms' }}>
+          <p className="text-base md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-reveal font-light tracking-wide px-4" style={{ animationDelay: '600ms' }}>
             Twoja firma nigdy nie śpi. My też nie. Wdrażamy systemy AI, które myślą, mówią i zarabiają za Ciebie, 24 godziny na dobę.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-reveal" style={{ animationDelay: '800ms' }}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-reveal px-6" style={{ animationDelay: '800ms' }}>
             <button 
               type="button"
               onClick={handleBookingClick}
-              className="group relative px-10 py-5 bg-white text-black rounded-full font-bold text-xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+              className="group relative px-8 py-4 bg-white text-black rounded-full font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)] w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"></div>
               <span className="relative z-10">Zacznij Odyseję</span>
             </button>
             <a 
               href="tel:+48729086144" 
-              className="px-10 py-5 bg-transparent border border-white/20 rounded-full font-bold text-xl text-white hover:bg-white/5 hover:border-white/40 transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-3 group"
+              className="px-8 py-4 bg-transparent border border-white/20 rounded-full font-bold text-lg text-white hover:bg-white/5 hover:border-white/40 transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-3 group w-full sm:w-auto"
             >
-              <Phone size={20} className="text-primary group-hover:rotate-12 transition-transform" />
+              <Phone size={18} className="text-primary group-hover:rotate-12 transition-transform" />
               <span>Zadzwoń do AI</span>
             </a>
           </div>
         </div>
 
         {/* Central Visual Piece - Unified Master Core */}
-        <div className="w-full max-w-[900px] aspect-[16/9] relative perspective-2000 animate-reveal" style={{ animationDelay: '1000ms' }}>
+        <div className="w-full max-w-[900px] aspect-square md:aspect-[16/9] relative perspective-2000 animate-reveal" style={{ animationDelay: '1000ms' }}>
            <div 
             className="relative w-full h-full flex items-center justify-center transition-transform duration-700 ease-out"
             style={{ transform: `rotateX(${mousePos.y * -0.2}deg) rotateY(${mousePos.x * 0.2}deg)` }}
            >
               {/* Massive Outer Halo */}
-              <div className="absolute w-[80%] h-[80%] rounded-full border border-primary/10 animate-[spin_30s_linear_infinite] opacity-30"></div>
-              <div className="absolute w-[60%] h-[60%] rounded-full border border-secondary/10 animate-[spin_20s_linear_infinite_reverse] opacity-20"></div>
+              <div className="absolute w-[90%] md:w-[80%] h-[90%] md:h-[80%] rounded-full border border-primary/10 animate-[spin_30s_linear_infinite] opacity-30"></div>
+              <div className="absolute w-[70%] md:w-[60%] h-[70%] md:h-[60%] rounded-full border border-secondary/10 animate-[spin_20s_linear_infinite_reverse] opacity-20"></div>
 
               {/* Main Core Cylinder */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary via-secondary to-accent opacity-20 blur-[60px] group-hover:opacity-40 transition-opacity duration-1000 animate-pulse"></div>
+              <div className="relative w-48 h-48 md:w-80 md:h-80 group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary via-secondary to-accent opacity-20 blur-[40px] md:blur-[60px] group-hover:opacity-40 transition-opacity duration-1000 animate-pulse"></div>
                 
                 {/* Floating Glass Panels */}
-                <div className="absolute -inset-10 border border-white/10 rounded-full backdrop-blur-[2px] animate-[spin_15s_linear_infinite] opacity-50"></div>
-                <div className="absolute -inset-20 border border-white/5 rounded-full backdrop-blur-[1px] animate-[spin_25s_linear_infinite_reverse] opacity-30"></div>
+                <div className="absolute -inset-6 md:-inset-10 border border-white/10 rounded-full backdrop-blur-[2px] animate-[spin_15s_linear_infinite] opacity-50"></div>
+                <div className="absolute -inset-12 md:-inset-20 border border-white/5 rounded-full backdrop-blur-[1px] animate-[spin_25s_linear_infinite_reverse] opacity-30"></div>
 
                 <div className="relative w-full h-full bg-[#050505] rounded-full border border-white/10 flex items-center justify-center shadow-2xl overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_70%)]"></div>
-                  <Bot size={80} className="text-white drop-shadow-[0_0_20px_rgba(0,212,255,0.5)] animate-float" />
+                  <Bot className="text-white drop-shadow-[0_0_20px_rgba(0,212,255,0.5)] animate-float w-12 h-12 md:w-20 md:h-20" />
                   
                   {/* Energy Rings */}
                   <div className="absolute inset-4 rounded-full border-2 border-primary/40 animate-pulse shadow-[inset_0_0_20px_rgba(0,212,255,0.2)]"></div>
@@ -166,31 +166,49 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Orbital Benefit Nodes */}
-              {benefits.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="absolute z-30 transition-all duration-700 ease-luxury"
-                  style={{ 
-                    top: item.positionStyle.top || 'auto',
-                    bottom: item.positionStyle.bottom || 'auto',
-                    left: item.positionStyle.left || 'auto',
-                    right: item.positionStyle.right || 'auto',
-                    transform: `translate3d(${mousePos.x * (idx + 1) * 0.4}px, ${mousePos.y * (idx + 1) * 0.4}px, 0)` 
-                  }}
-                >
-                  <div className="flex flex-col items-center gap-3 group/node">
-                    <div className={`p-4 rounded-2xl bg-[#0a0a0a]/80 backdrop-blur-2xl border border-white/10 shadow-2xl group-hover/node:border-primary/50 transition-all duration-500 scale-90 group-hover/node:scale-110`}>
-                      <item.icon className={`w-6 h-6 ${item.iconColor} group-hover/node:scale-110 transition-transform`} />
-                    </div>
-                    <div className="bg-white/5 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 opacity-0 group-hover/node:opacity-100 transition-opacity duration-300">
-                      <span className="text-[10px] font-bold tracking-widest text-white uppercase">{item.title}</span>
+              {/* Orbital Benefit Nodes - Desktop Only */}
+              <div className="hidden md:block">
+                {benefits.map((item, idx) => (
+                  <div 
+                    key={idx} 
+                    className="absolute z-30 transition-all duration-700 ease-luxury"
+                    style={{ 
+                      top: item.positionStyle.top || 'auto',
+                      bottom: item.positionStyle.bottom || 'auto',
+                      left: item.positionStyle.left || 'auto',
+                      right: item.positionStyle.right || 'auto',
+                      transform: `translate3d(${mousePos.x * (idx + 1) * 0.4}px, ${mousePos.y * (idx + 1) * 0.4}px, 0)` 
+                    }}
+                  >
+                    <div className="flex flex-col items-center gap-3 group/node">
+                      <div className={`p-4 rounded-2xl bg-[#0a0a0a]/80 backdrop-blur-2xl border border-white/10 shadow-2xl group-hover/node:border-primary/50 transition-all duration-500 scale-90 group-hover/node:scale-110`}>
+                        <item.icon className={`w-6 h-6 ${item.iconColor} group-hover/node:scale-110 transition-transform`} />
+                      </div>
+                      <div className="bg-white/5 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 opacity-0 group-hover/node:opacity-100 transition-opacity duration-300">
+                        <span className="text-[10px] font-bold tracking-widest text-white uppercase">{item.title}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
            </div>
         </div>
+
+        {/* Mobile Benefit Grid - Shown only on small screens */}
+        <div className="md:hidden mt-12 grid grid-cols-2 gap-3 w-full animate-reveal px-2" style={{ animationDelay: '1200ms' }}>
+            {benefits.map((item, idx) => (
+              <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-4 flex flex-col items-center text-center backdrop-blur-sm">
+                <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 mb-3`}>
+                  <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+                </div>
+                <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mb-1">{item.label}</div>
+                <div className="text-xs font-bold text-white flex items-center gap-1">
+                   {item.title}
+                   {item.isLive && <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse inline-block"></span>}
+                </div>
+              </div>
+            ))}
+          </div>
       </div>
       
       {/* Divider transitions to Features */}

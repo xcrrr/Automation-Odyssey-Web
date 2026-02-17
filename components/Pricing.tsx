@@ -57,41 +57,41 @@ export const Pricing: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto px-2 md:px-0">
           {plans.map((plan) => (
             <div 
               key={plan.name}
-              className={`group relative p-1 rounded-[2.5rem] transition-all duration-500 hover:scale-[1.02]
+              className={`group relative p-0.5 md:p-1 rounded-[2.5rem] transition-all duration-500 hover:scale-[1.02]
                 ${plan.isPopular 
                   ? 'bg-gradient-to-b from-secondary/50 to-primary/50 shadow-[0_0_50px_rgba(99,102,241,0.2)]' 
                   : 'bg-white/5 border border-white/5'
                 }
               `}
             >
-              <div className="bg-[#0a0a0a] rounded-[2.4rem] p-8 md:p-12 h-full flex flex-col">
+              <div className="bg-[#0a0a0a] rounded-[2.4rem] p-6 md:p-12 h-full flex flex-col">
                 {plan.isPopular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-secondary to-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full flex items-center gap-2 shadow-2xl">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-secondary to-primary text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] px-4 md:px-6 py-2 rounded-full flex items-center gap-2 shadow-2xl z-20">
                     <Sparkles size={12} />
                     Najchętniej Wybierany
                   </div>
                 )}
                 
-                <div className="mb-10">
-                  <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">{plan.name}</h3>
+                <div className="mb-8 md:mb-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">{plan.name}</h3>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-5xl md:text-6xl font-bold text-white tracking-tighter">{plan.price}</span>
-                    <span className="text-gray-500 font-light">/netto</span>
+                    <span className="text-4xl md:text-6xl font-bold text-white tracking-tighter">{plan.price}</span>
+                    <span className="text-gray-500 font-light text-sm">/netto</span>
                   </div>
-                  <p className="text-gray-400 font-light leading-relaxed">{plan.description}</p>
+                  <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed">{plan.description}</p>
                 </div>
                 
-                <div className="space-y-5 mb-12 flex-grow">
+                <div className="space-y-4 md:space-y-5 mb-10 md:mb-12 flex-grow">
                   {plan.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-4 group/item">
-                      <div className={`p-1 rounded-full ${plan.isPopular ? 'bg-secondary/20' : 'bg-white/10'} transition-colors group-hover/item:bg-primary/30`}>
-                        <Check className={`h-4 w-4 ${plan.isPopular ? 'text-secondary' : 'text-primary'}`} />
+                    <div key={i} className="flex items-start gap-3 md:gap-4 group/item">
+                      <div className={`mt-1 p-0.5 md:p-1 rounded-full ${plan.isPopular ? 'bg-secondary/20' : 'bg-white/10'} transition-colors group-hover/item:bg-primary/30`}>
+                        <Check className={`h-3 w-3 md:h-4 md:w-4 ${plan.isPopular ? 'text-secondary' : 'text-primary'}`} />
                       </div>
-                      <span className="text-gray-300 font-light text-base md:text-lg">{feature}</span>
+                      <span className="text-gray-300 font-light text-sm md:text-lg">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -99,7 +99,7 @@ export const Pricing: React.FC = () => {
                 <button 
                   type="button"
                   onClick={handleBookingClick}
-                  className={`group relative w-full py-5 rounded-3xl font-black text-lg tracking-widest uppercase transition-all duration-300 overflow-hidden
+                  className={`group relative w-full py-4 md:py-5 rounded-2xl md:rounded-3xl font-black text-sm md:text-lg tracking-widest uppercase transition-all duration-300 overflow-hidden
                     ${plan.isPopular 
                       ? 'bg-white text-black hover:bg-primary hover:text-white' 
                       : 'bg-transparent border border-white/10 text-white hover:bg-white/5'

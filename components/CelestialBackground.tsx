@@ -101,9 +101,17 @@ export const CelestialBackground: React.FC = () => {
       mouse.y = e.clientY;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    };
+
     const init = () => {
       particles = [];
-      const particleCount = Math.floor((width * height) / 10000);
+      const density = window.innerWidth < 768 ? 20000 : 10000;
+      const particleCount = Math.min(Math.floor((width * height) / density), 150);
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
@@ -133,11 +141,13 @@ export const CelestialBackground: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
 
