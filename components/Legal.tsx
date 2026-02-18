@@ -59,6 +59,10 @@ export const PrivacyPolicy: React.FC = () => (
         <h2 className="text-xl font-bold text-white mb-3">5. Twoje prawa</h2>
         <p>Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia („prawo do bycia zapomnianym”), ograniczenia przetwarzania, wniesienia sprzeciwu oraz wniesienia skargi do PUODO.</p>
       </section>
+      <section>
+        <h2 className="text-xl font-bold text-white mb-3">6. Cookies i analityka</h2>
+        <p>Strona wykorzystuje pliki cookies w celu zapewnienia poprawnego działania serwisu oraz analizy ruchu. Możesz zarządzać ustawieniami cookies w swojej przeglądarce.</p>
+      </section>
     </div>
   </LegalPage>
 );
@@ -71,16 +75,40 @@ export const TermsOfService: React.FC = () => (
         <p>Niniejszy regulamin określa zasady korzystania z serwisu automationodyssey.pl oraz zamawiania usług automatyzacji AI. Usługodawcą jest Adam Parszewski (Automation Odyssey).</p>
       </section>
       <section>
-        <h2 className="text-xl font-bold text-white mb-3">2. Usługi</h2>
-        <p>Automation Odyssey świadczy usługi projektowania, wdrażania i utrzymania systemów konwersacyjnej sztucznej inteligencji (Voiceboty i Chatboty). Szczegółowy zakres i cena usługi ustalane są indywidualnie.</p>
+        <h2 className="text-xl font-bold text-white mb-3">2. Zakres usług</h2>
+        <p>Automation Odyssey oferuje usługi z zakresu zaawansowanej automatyzacji procesów biznesowych przy użyciu sztucznej inteligencji, w tym:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Projektowanie i wdrażanie Voicebotów AI (Vapi, ElevenLabs, Retell).</li>
+          <li>Automatyzacja komunikacji z klientem (Chatboty AI, WhatsApp Automation).</li>
+          <li>Systemy Revenue Recovery i reaktywacji bazy klientów (DBR).</li>
+          <li>Integracje procesów biznesowych (Zapier, Make.com).</li>
+        </ul>
       </section>
       <section>
-        <h2 className="text-xl font-bold text-white mb-3">3. Realizacja zamówień</h2>
-        <p>Z uwagi na wiek Wykonawcy (15 lat), wszelkie wiążące umowy cywilnoprawne są zawierane przy udziale i za zgodą opiekunów prawnych lub za pośrednictwem platformy rozliczeniowej (np. Useme).</p>
+        <h2 className="text-xl font-bold text-white mb-3">3. Realizacja usług i płatności</h2>
+        <p>Z uwagi na wiek Wykonawcy (15 lat), działalność prowadzona jest w modelu inkubacji biznesowej lub przy udziale opiekunów prawnych. Rozliczenia następują za pośrednictwem:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Platformy <strong>Useme</strong> (wystawianie faktur VAT bez konieczności posiadania firmy).</li>
+          <li>Inkubatorów przedsiębiorczości (np. Twój Startup).</li>
+          <li>Bezpośrednich umów cywilnoprawnych za zgodą rodziców.</li>
+        </ul>
       </section>
       <section>
-        <h2 className="text-xl font-bold text-white mb-3">4. Odpowiedzialność</h2>
-        <p>Usługodawca nie ponosi odpowiedzialności za treści generowane przez modele AI, które wykraczają poza zdefiniowane ramy konwersacji, o ile wynikają one z nieprzewidywalnego zachowania modeli zewnętrznych dostawców.</p>
+        <h2 className="text-xl font-bold text-white mb-3">4. Odpowiedzialność i Gwarancja</h2>
+        <p>Automation Odyssey dokłada wszelkich starań, aby systemy AI działały precyzyjnie. Klient przyjmuje do wiadomości, że:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Modele LLM (Large Language Models) mogą generować nieprzewidywalne odpowiedzi (tzw. halucynacje).</li>
+          <li>Dostawca nie odpowiada za przerwy w działaniu usług zewnętrznych (OpenAI, Vapi, Google).</li>
+          <li>Wszelkie krytyczne automatyzacje podlegają fazie testowej (sandbox).</li>
+        </ul>
+      </section>
+      <section>
+        <h2 className="text-xl font-bold text-white mb-3">5. Dane osobowe (RODO)</h2>
+        <p>Zasady przetwarzania danych osobowych określa <a href="#privacy" className="text-primary hover:underline">Polityka Prywatności</a>. W przypadku usług wymagających dostępu do danych klientów naszych Zleceniodawców, zawierana jest odrębna umowa powierzenia przetwarzania danych (DPA).</p>
+      </section>
+      <section>
+        <h2 className="text-xl font-bold text-white mb-3">6. Postanowienia końcowe</h2>
+        <p>Usługodawca zastrzega sobie prawo do zmiany regulaminu. Zmiany wchodzą w życie z dniem publikacji na stronie. W sprawach spornych dążymy do polubownego rozwiązania w duchu partnerstwa biznesowego.</p>
       </section>
     </div>
   </LegalPage>

@@ -51,23 +51,23 @@ export const Features: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <BentoCard 
             icon={Bot}
-            title="AI Voice Agents"
-            description="Autonomiczni agenci głosowi, którzy brzmią jak człowiek i przejmują 100% połączeń."
+            title="Wsparcie Głosowe 24/7"
+            description="Nasze inteligentne systemy przejmują 100% połączeń przychodzących. Rezerwują wizyty, odpowiadają na pytania i kwalifikują leady, podczas gdy Ty śpisz."
           />
           <BentoCard 
             icon={Zap}
-            title="Speed-to-Lead"
-            description="Kontakt z nowym klientem w mniej niż 30 sekund od zapytania."
+            title="Błyskawiczny Kontakt"
+            description="Badania pokazują, że kontakt w ciągu 5 minut zwiększa szansę na sprzedaż o 900%. Nasza automatyzacja oddzwania do klienta zanim ten zamknie Twoją stronę."
           />
           <BentoCard 
             icon={Target}
-            title="AI Recruitment"
-            description="Automatyczny screening i wywiady z kandydatami do pracy."
+            title="Odzyskiwanie Leadów"
+            description="Twoja stara baza danych to kopalnia złota. AI przeprowadza kampanie reaktywacyjne, które budzą uśpione kontakty i zamieniają je w realne zamówienia."
           />
           <BentoCard 
             icon={BarChart3}
-            title="Database Recovery"
-            description="Inteligentne budzenie starych baz danych i odzyskiwanie sprzedaży."
+            title="Budowa Autorytetu"
+            description="Automatycznie monitorujemy satysfakcję klientów i kierujemy zadowolonych odbiorców do zostawienia 5 gwiazdek w Google Maps, budując Twoją dominację lokalną."
           />
         </div>
       </div>

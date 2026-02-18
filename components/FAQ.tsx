@@ -23,25 +23,25 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export const FAQ: React.FC = () => {
   const faqs = [
     {
-      question: "Czy AI brzmi jak robot?",
-      answer: "Nie. Używamy najnowocześniejszych modeli mowy (GPT-4o + Echo), które zachowują naturalną intonację, potrafią robić pauzy i reagują w czasie rzeczywistym. W większości przypadków klienci nie orientują się, że rozmawiają z AI."
+      question: "Czy to się opłaca małej firmie?",
+      answer: "Zdecydowanie. Nasze systemy kosztują ułamek pensji pracownika, a pracują 24/7. System Speed-to-Lead zwraca się zazwyczaj już przy pierwszym uratowanym leadzie, który inaczej poszedłby do konkurencji."
     },
     {
-      question: "Jak wygląda kwestia prawna i RODO w Polsce?",
-      answer: "Wszystkie nasze wdrożenia są zgodne z polskim prawem. Bot informuje o nagrywaniu rozmowy, a dane są przetwarzane na bezpiecznych, europejskich serwerach. Przygotowujemy pełną dokumentację prawną dla Twojej firmy."
+      question: "Czy wystawiacie faktury VAT?",
+      answer: "Tak. Jako profesjonalna agencja działająca w ramach inkubatora przedsiębiorczości wystawiamy faktury VAT, które możesz wliczyć w koszty prowadzenia działalności."
     },
     {
-      question: "Ile czasu zajmuje wdrożenie?",
-      answer: "Standardowy system rekrutacyjny lub voicebot sprzedażowy uruchamiamy w ciągu 7-14 dni roboczych, wliczając w to testy i tuning skryptów."
+      question: "Czy muszę znać się na technologii?",
+      answer: "Absolutnie nie. My zajmujemy się wszystkim – od konfiguracji serwerów po pisanie skryptów rozmów. Ty otrzymujesz gotowy panel i powiadomienia o nowych klientach na telefon."
     },
     {
-      question: "Co jeśli bot nie będzie znał odpowiedzi na pytanie?",
-      answer: "System jest zaprogramowany tak, aby w razie wątpliwości grzecznie zasugerować kontakt z człowiekiem lub przekazać prośbę o oddzwonienie do właściciela firmy."
+      question: "Czy AI nie popsuje mojej reputacji?",
+      answer: "Wręcz przeciwnie. Nasze boty są zawsze uprzejme, nigdy nie zapominają o oddzwonieniu i zbierają tylko pozytywne opinie. W razie trudnych pytań system płynnie przekazuje kontakt do Ciebie."
     }
   ];
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-[#020202]">
+    <section id="faq" className="py-24 md:py-32 px-6 bg-[#020202]">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-black mb-16 text-white text-center">
           Pytania i <span className="gradient-text italic">Odpowiedzi.</span>

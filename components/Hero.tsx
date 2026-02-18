@@ -72,20 +72,20 @@ export const Hero: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProductCard 
             icon={MessageSquare}
-            title="Voice Agents"
-            description="Pełna obsługa telefoniczna 24/7. Boty rozmawiają, kwalifikują i umawiają wizyty."
-            badge="Bestseller"
+            title="Reaktywacja Bazy (DBR)"
+            description="Wyciągamy 'ukryte pieniądze' z Twoich starych leadów. System AI kontaktuje się z zapomnianymi klientami i generuje nowe zamówienia."
+            badge="Najszybsze ROI"
           />
           <ProductCard 
-            icon={Receipt}
-            title="Faktury & Windykacja"
-            description="Automatyczne monitorowanie płatności i przypomnienia KSeF. Odzyskaj płynność."
-            badge="Nowość"
+            icon={Zap}
+            title="Błyskawiczny Kontakt"
+            description="Nigdy więcej uciekających leadów. System AI oddzwania do klienta w 3 minuty po wysłaniu formularza, 24/7."
+            badge="Speed-to-Lead"
           />
           <ProductCard 
-            icon={Users}
-            title="Rekrutacja AI"
-            description="Błyskawiczny screening kandydatów z OLX. Znajdź fachowców bez marnowania czasu."
+            icon={CheckCircle2}
+            title="Budowa Reputacji"
+            description="Automatycznie zbieraj opinie 5* w Google Maps od zadowolonych klientów i wyprzedź konkurencję w Szczecinie."
           />
         </div>
       </div>

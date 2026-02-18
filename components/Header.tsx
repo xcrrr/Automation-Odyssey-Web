@@ -21,18 +21,30 @@ export const Header: React.FC = () => {
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const element = document.querySelector(targetId);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    if (targetId.startsWith('#')) {
+      const hash = targetId;
+      if (hash === '#privacy' || hash === '#terms') {
+        // Allow default behavior for routes handled in App.tsx
+        return;
+      }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setIsMenuOpen(false);
+      e.preventDefault();
+      const id = targetId.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        setIsMenuOpen(false);
+      } else {
+        // If element doesn't exist (e.g. we are on privacy page), go to home with hash
+        window.location.href = '/' + hash;
+      }
     }
   };
 
@@ -53,7 +65,13 @@ export const Header: React.FC = () => {
         `}
       >
         <div className="flex items-center justify-between h-14">
-          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => {
+            if (window.location.hash) {
+              window.location.href = '/';
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}>
             <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-[360deg]">
                 <Compass className="h-6 w-6" />
             </div>

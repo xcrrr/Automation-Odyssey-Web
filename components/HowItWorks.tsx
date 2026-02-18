@@ -2,19 +2,15 @@ import React from 'react';
 import { Settings, Mic, Link, CheckCircle } from 'lucide-react';
 
 const steps = [
-  { id: 1, title: 'Blueprint', description: 'Analizujemy wąskie gardła i projektujemy logikę agenta.', Icon: Settings },
-  { id: 2, title: 'Głos', description: 'Klonujemy Twój głos lub wybieramy z biblioteki profesjonalnych modeli.', Icon: Mic },
-  { id: 3, title: 'Integracja', description: 'Spinamy AI z Twoim CRM, kalendarzem i telefonem.', Icon: Link },
-  { id: 4, title: 'Start', description: 'Uruchamiamy system i optymalizujemy konwersję.', Icon: CheckCircle },
+  { id: 1, title: 'Audyt', description: 'Mapujemy Twoje obecne procesy i znajdujemy miejsca, w których tracisz czas i pieniądze.', Icon: Settings },
+  { id: 2, title: 'Architektura', description: 'Projektujemy dedykowaną inteligencję dopasowaną do tonu Twojej marki.', Icon: Mic },
+  { id: 3, title: 'Ekosystem', description: 'Integrujemy system z Twoimi narzędziami (CRM, Kalendarz, SMS) w jeden organizm.', Icon: Link },
+  { id: 4, title: 'Skalowanie', description: 'Uruchamiamy automatyzację i monitorujemy wzrost Twoich przychodów.', Icon: CheckCircle },
 ];
 
 export const HowItWorks: React.FC = () => {
   const handleBookingClick = () => {
-    if (window.Cal) {
-      window.Cal("ui", "open", { calLink: "automationodyssey.pl/konsultacja-ai" });
-    } else {
-      window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
-    }
+    window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
   };
 
   return (
