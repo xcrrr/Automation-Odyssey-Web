@@ -5,205 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Odyssey | Standard Agentyczny 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --fluid-min-width: 320;
-            --fluid-max-width: 1920;
-            --fluid-min-size: 14;
-            --fluid-max-size: 18;
-            --fluid-min-ratio: 1.2;
-            --fluid-max-ratio: 1.25;
-            --fluid-screen: 100vw;
-            --fluid-bp: calc(
-                (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
-                (var(--fluid-max-width) - var(--fluid-min-width))
-            );
-        }
-        
-        @keyframes noise {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes shoot {
-            0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
-            100% { transform: translateX(1000px) translateY(1000px) rotate(45deg); opacity: 0; }
-        }
-        
-        @keyframes rotateIn {
-            from { transform: perspective(1000px) rotateY(10deg); opacity: 0; }
-            to { transform: perspective(1000px) rotateY(0); opacity: 1; }
-        }
-        
-        @keyframes blurIn {
-            from { filter: blur(10px); opacity: 0; }
-            to { filter: blur(0); opacity: 1; }
-        }
-        
-        @keyframes skewIn {
-            from { transform: skewX(10deg) translateX(-30px); opacity: 0; }
-            to { transform: skewX(0) translateX(0); opacity: 1; }
-        }
-        
-        @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        
-        @keyframes slideFromRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        html {
-            font-size: clamp(
-                var(--fluid-min-size) * 1px,
-                var(--fluid-min-size) * 1px + var(--fluid-bp) * (var(--fluid-max-size) - var(--fluid-min-size)),
-                var(--fluid-max-size) * 1px
-            );
-            scroll-behavior: smooth;
-        }
-        
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background: #020202; 
             color: white; 
             overflow-x: hidden;
-            cursor: none;
+            scroll-behavior: smooth;
+            cursor: default;
         }
-        
-        h1 {
-            font-size: clamp(3rem, 5vw + 1rem, 8rem);
-            line-height: 1;
-        }
-        
-        h2 {
-            font-size: clamp(2rem, 3vw + 1rem, 4rem);
-        }
-        
-        h3 {
-            font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2rem);
-        }
-        
-        p {
-            font-size: clamp(1rem, 1vw + 0.2rem, 1.2rem);
-            line-height: 1.6;
-        }
-        
-        section {
-            padding: clamp(4rem, 10vw, 12rem) 0;
-        }
-        
         .glass { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        
-        .glass::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            z-index: -1;
-            animation: noise 8s linear infinite;
-            pointer-events: none;
-        }
-        
         .glass:hover {
             background: rgba(255, 255, 255, 0.08);
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
             transform: translateY(-5px);
         }
-        
-        .glass-blur {
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.15), transparent 70%);
-            filter: blur(40px);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .glass:hover .glass-blur {
-            opacity: 1;
-        }
-        
         .hero-gradient { 
             background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
         }
-        
         .text-gradient { 
             background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #6366f1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
         .btn-primary { 
             background: #fff;
             color: #000;
-            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+            padding: 12px 32px;
             border-radius: 99px;
             font-weight: 700;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            transition: 0.3s;
         }
-        
-        .btn-primary::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #00d4ff, #6366f1);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
         .btn-primary:hover { 
-            color: white;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            background: #00d4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
         }
-        
-        .btn-primary:hover::after {
-            opacity: 1;
-        }
-        
-        .magnetic-btn {
-            display: inline-block;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        
         .shooting-star {
             position: absolute;
             height: 2px;
@@ -211,44 +55,19 @@
             animation: shoot 3s ease-out infinite;
             opacity: 0;
         }
-        
-        .custom-cursor {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            transform: translate(-50%, -50%);
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
+            100% { transform: translateX(1000px) translateY(1000px) rotate(45deg); opacity: 0; }
         }
-        
-        .cursor-border {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.2s ease;
-            transform: translate(-50%, -50%);
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
-        
-        .cursor-hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(0, 212, 255, 0.5);
-            mix-blend-mode: difference;
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .border-hover {
-            width: 60px;
-            height: 60px;
-            border-color: rgba(0, 212, 255, 0.8);
-            background-color: rgba(0, 212, 255, 0.05);
-        }
-        
         #starfield {
             position: fixed;
             top: 0;
@@ -257,36 +76,37 @@
             height: 100%;
             z-index: -1;
         }
+        .step-card { position: relative; }
+        .step-card::before { content: ""; position: absolute; top: 50%; right: -30px; height: 2px; width: 60px; background: rgba(0, 212, 255, 0.2); }
+        .step-card:last-child::before { display: none; }
     </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-    <div class="cursor-border"></div>
     <canvas id="starfield"></canvas>
 
     <nav class="fixed w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center glass px-6 py-3">
             <div class="text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span></div>
-            <a href="#contact" class="hidden md:block magnetic-btn bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Konsultację</a>
+            <a href="https://cal.com/automationodyssey/konsultacja-ai" class="hidden md:block bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
         </div>
     </nav>
 
     <main class="relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center pt-20 hero-gradient">
-            <div class="max-w-5xl mx-auto text-center px-6 animate-section" data-animation="blurIn">
+        <section class="min-h-screen flex items-center justify-center pt-20 hero-gradient fade-up">
+            <div class="max-w-4xl mx-auto text-center px-6">
                 <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold mb-6 tracking-widest text-[#00d4ff]">
-                    PRZEWAGA TECHNOLOGICZNA 2026
+                    TWOJA PRZEWAGA NAD KONKURENCJĄ
                 </div>
-                <h1 class="font-extrabold mb-8 tracking-tight leading-none">
-                    Twoja Organizacja na <br><span class="text-gradient">Agentycznym Autopilocie</span>
+                <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tight leading-none">
+                    Twoja Firma na <br><span class="text-gradient">Autopilocie AI</span>
                 </h1>
-                <p class="text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Implementujemy autonomiczne systemy AI najwyższej klasy, które prowadzą sprzedaż, obsługę klientów i optymalizację procesów 24/7/365. Z precyzją, bez przestojów.
+                <p class="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Wdrażamy bezpieczne, autonomiczne systemy AI, które sprzedają, obsługują klientów i optymalizują procesy 24/7. Bez błędów, bez przerw.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="#contact" class="btn-primary magnetic-btn">Inicjuj Transformację</a>
-                    <a href="#features" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/5 transition magnetic-btn">Nasze Rozwiązania</a>
+                    <a href="#contact" class="btn-primary">Rozpocznij Transformację</a>
+                    <a href="#features" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/5 transition">Nasze Rozwiązania</a>
                 </div>
             </div>
         </section>
@@ -294,133 +114,142 @@
         <!-- Features -->
         <section id="features" class="py-32 px-6">
             <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-                <div class="glass p-10 animate-section" data-animation="rotateIn">
-                    <div class="glass-blur"></div>
+                <div class="glass p-10 fade-up">
                     <div class="text-4xl mb-6">🎙️</div>
-                    <h3 class="text-xl font-bold mb-4">Voiceboty 3.0 Ultra-Precision</h3>
-                    <p class="text-white/60 leading-relaxed">Autonomiczni agenci głosowi odbierający 100% połączeń z precyzją konwersacyjną 99.7%. Finalizują transakcje i zarządzają relacjami w czasie < 30s.</p>
+                    <h3 class="text-xl font-bold mb-4">Voiceboty 2.4 High-Brevity</h3>
+                    <p class="text-white/50 leading-relaxed">Autonomiczni agenci głosowi odbierający 100% połączeń. Umawiają wizyty i domykają sprzedaż w < 30s.</p>
                 </div>
-                <div class="glass p-10 animate-section" data-animation="skewIn" style="transition-delay: 0.2s">
-                    <div class="glass-blur"></div>
+                <div class="glass p-10 fade-up" style="transition-delay: 0.2s">
                     <div class="text-4xl mb-6">⚡</div>
-                    <h3 class="text-xl font-bold mb-4">Quantum Speed-to-Lead</h3>
-                    <p class="text-white/60 leading-relaxed">Infrastruktura natychmiastowej reakcji. Twój agent AI kontaktuje się z potencjalnym klientem w 0.8 sekundy, zanim konkurencja zdąży odczytać powiadomienie.</p>
+                    <h3 class="text-xl font-bold mb-4">Speed-to-Lead Automation</h3>
+                    <p class="text-white/50 leading-relaxed">Systemy natychmiastowej reakcji. Twoje AI oddzwania do leada, zanim konkurencja zdąży otworzyć maila.</p>
                 </div>
-                <div class="glass p-10 animate-section" data-animation="scaleIn" style="transition-delay: 0.4s">
-                    <div class="glass-blur"></div>
+                <div class="glass p-10 fade-up" style="transition-delay: 0.4s">
                     <div class="text-4xl mb-6">🛡️</div>
-                    <h3 class="text-xl font-bold mb-4">Enterprise Secure Sandbox</h3>
-                    <p class="text-white/60 leading-relaxed">Prywatna infrastruktura OpenClaw z certyfikacją ISO 27001. Dane Twojej organizacji pozostają w izolowanym środowisku z gwarancją prywatności na poziomie militarnym.</p>
+                    <h3 class="text-xl font-bold mb-4">Secure Agent Sandbox</h3>
+                    <p class="text-white/50 leading-relaxed">Prywatna infrastruktura OpenClaw. Dane Twojej firmy są bezpieczne i nigdy nie trafiają do publicznych LLM.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="py-32 px-6">
-            <div class="max-w-6xl mx-auto animate-section" data-animation="slideFromRight">
-                <div class="glass p-12 relative overflow-hidden">
-                    <div class="glass-blur"></div>
-                    <div class="text-5xl text-[#00d4ff] font-bold absolute top-10 left-10 opacity-20">"</div>
-                    <div class="relative z-10">
-                        <p class="text-xl md:text-2xl font-light italic text-white/80 mb-8">
-                            Implementacja systemu Automation Odyssey zwiększyła naszą efektywność o 317% przy jednoczesnej redukcji kosztów operacyjnych. To nie jest usprawnienie — to kompletna transformacja biznesowa.
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-[#00d4ff] to-[#6366f1] mr-4"></div>
-                            <div>
-                                <div class="font-bold">Aleksandra Wiśniewska</div>
-                                <div class="text-white/50 text-sm">Chief Innovation Officer, Nexus Group</div>
-                            </div>
-                        </div>
+        <!-- Metodologia Section -->
+        <section class="py-32 px-6 bg-black/30 fade-up">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16">Nasza Metodologia</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="step-card glass p-10">
+                        <div class="text-3xl mb-4">01</div>
+                        <h3 class="text-xl font-bold mb-4">Audyt & Discovery</h3>
+                        <p class="text-white/50">Kompleksowa analiza procesów biznesowych i identyfikacja potencjału automatyzacji z wykorzystaniem infrastruktury agentycznej.</p>
+                    </div>
+                    <div class="step-card glass p-10">
+                        <div class="text-3xl mb-4">02</div>
+                        <h3 class="text-xl font-bold mb-4">Wdrożenie & Integracja</h3>
+                        <p class="text-white/50">Implementacja dedykowanych agentów AI w bezpiecznym środowisku sandboxowym z pełną integracją systemową.</p>
+                    </div>
+                    <div class="step-card glass p-10">
+                        <div class="text-3xl mb-4">03</div>
+                        <h3 class="text-xl font-bold mb-4">Optymalizacja & Skala</h3>
+                        <p class="text-white/50">Ciągłe doskonalenie modeli AI i rozszerzanie automatyzacji na kolejne obszary operacyjne.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
-        <section id="contact" class="py-32 px-6">
-            <div class="max-w-3xl mx-auto glass p-12 text-center animate-section" data-animation="blurIn">
-                <div class="glass-blur"></div>
-                <h2 class="text-3xl font-bold mb-6">Inicjuj Transformację</h2>
-                <p class="text-white/70 mb-8">Zarezerwuj ekskluzywną konsultację strategiczną i odkryj potencjał agentów AI dla Twojej organizacji</p>
-                <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary inline-block magnetic-btn">Zarezerwuj Strategiczną Sesję</a>
+        <!-- Zastosowania Biznesowe -->
+        <section class="py-32 px-6 fade-up">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16">Zastosowania Biznesowe</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass p-8">
+                        <div class="text-4xl mb-6">🌱</div>
+                        <h3 class="text-xl font-bold mb-4">OZE & HVAC</h3>
+                        <p class="text-white/50">Inteligentne voiceboty kwalifikujące leady i umawiające audyty energetyczne z 92% skutecznością konwersji.</p>
+                    </div>
+                    <div class="glass p-8">
+                        <div class="text-4xl mb-6">📊</div>
+                        <h3 class="text-xl font-bold mb-4">Reaktywacja Baz</h3>
+                        <p class="text-white/50">System multi-agentowy reaktywujący nieaktywne bazy klientów poprzez personalizowaną komunikację omnichannel.</p>
+                    </div>
+                    <div class="glass p-8">
+                        <div class="text-4xl mb-6">🤖</div>
+                        <h3 class="text-xl font-bold mb-4">AI Support 24/7</h3>
+                        <p class="text-white/50">Zaawansowana obsługa klienta wykorzystująca LLM nowej generacji z kontekstową pamięcią długoterminową.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-32 px-6 bg-black/30 fade-up">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16">Często Zadawane Pytania</h2>
+                <div class="space-y-6">
+                    <div class="glass p-6">
+                        <h3 class="text-xl font-bold mb-3">Jak zapewniacie bezpieczeństwo danych?</h3>
+                        <p class="text-white/50">Wykorzystujemy prywatną infrastrukturę OpenClaw z izolowanym środowiskiem sandboxowym. Twoje dane nigdy nie opuszczają Twojego ekosystemu.</p>
+                    </div>
+                    <div class="glass p-6">
+                        <h3 class="text-xl font-bold mb-3">Jaki jest czas wdrożenia?</h3>
+                        <p class="text-white/50">Pierwsze rezultaty w 14 dni. Pełne wdrożenie i optymalizacja zajmuje 30-45 dni, w zależności od skali operacji.</p>
+                    </div>
+                    <div class="glass p-6">
+                        <h3 class="text-xl font-bold mb-3">Czy zintegrujecie się z naszym CRM?</h3>
+                        <p class="text-white/50">Tak, zapewniamy pełną integrację z popularnymi systemami CRM oraz możliwość stworzenia dedykowanych konektorów API.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 px-6 fade-up">
+            <div class="max-w-7xl mx-auto">
+                <div class="glass p-12 grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-6">Rozpocznij Transformację</h2>
+                        <p class="text-white/50 mb-8">Umów bezpłatną konsultację i poznaj potencjał AI w Twojej firmie.</p>
+                        <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary inline-block">Zarezerwuj Termin</a>
+                    </div>
+                    <div class="glass bg-white/5 p-8 rounded-2xl">
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Nazwa firmy</label>
+                                <input type="text" class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Wiadomość</label>
+                                <textarea class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 h-32"></textarea>
+                            </div>
+                            <button type="button" class="btn-primary w-full">Wyślij</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 text-center text-white/30 text-xs tracking-widest border-t border-white/5">
-        &copy; 2026 AUTOMATION ODYSSEY | QUANTUM AGENT INFRASTRUCTURE | WARSZAWA • BERLIN • SAN FRANCISCO
+    <footer class="py-12 text-center text-white/20 text-xs tracking-widest border-t border-white/5">
+        &copy; 2026 AUTOMATION ODYSSEY AGENCY | SZCZECIN & GLOBAL
     </footer>
 
     <script>
-        // Custom cursor
-        const cursor = document.querySelector('.custom-cursor');
-        const cursorBorder = document.querySelector('.cursor-border');
-        const links = document.querySelectorAll('a, button, .magnetic-btn');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-            
-            // Delayed follow for the border
-            setTimeout(() => {
-                cursorBorder.style.left = `${e.clientX}px`;
-                cursorBorder.style.top = `${e.clientY}px`;
-            }, 50);
-        });
-        
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-hover');
-                cursorBorder.classList.add('border-hover');
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-hover');
-                cursorBorder.classList.remove('border-hover');
-            });
-        });
-        
-        // Magnetic buttons
-        const magneticBtns = document.querySelectorAll('.magnetic-btn');
-        
-        magneticBtns.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                // Magnetic effect strength
-                const strength = 20;
-                const magneticX = x * strength / rect.width;
-                const magneticY = y * strength / rect.height;
-                
-                btn.style.transform = `translate(${magneticX}px, ${magneticY}px)`;
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0, 0)';
-            });
-        });
-        
-        // Enhanced Starfield with Parallax
+        // Starfield Effect
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
         let stars = [];
-        let mouseX = 0;
-        let mouseY = 0;
         
         class Star {
             constructor() {
                 this.x = Math.random() * width - width/2;
                 this.y = Math.random() * height - height/2;
                 this.z = Math.random() * width;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speed = Math.random() * 0.5 + 0.5;
-                this.brightness = Math.random() * 0.8 + 0.2;
-                this.color = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 155)}, 255, ${this.brightness})`;
+                this.speed = 1;
             }
             
             move() {
@@ -433,48 +262,25 @@
             }
             
             draw() {
-                // Apply parallax effect based on mouse position
-                const parallaxX = (mouseX - width/2) * 0.001;
-                const parallaxY = (mouseY - height/2) * 0.001;
-                
-                let x = (this.x/this.z) * width + width/2 + this.x * parallaxX;
-                let y = (this.y/this.z) * height + height/2 + this.y * parallaxY;
-                let size = (1 - this.z/width) * this.size * 3;
-                
-                // Create a glow effect
-                const glow = (1 - this.z/width) * 20;
+                let x = (this.x/this.z) * width + width/2;
+                let y = (this.y/this.z) * height + height/2;
+                let size = (1 - this.z/width) * 3;
                 
                 ctx.beginPath();
-                ctx.fillStyle = this.color.replace('rgba', 'rgba').replace(')', `, ${1 - this.z/width})`);
-                
-                // Draw the star with a slight blur for glow
-                if (size > 1.2) {
-                    ctx.shadowColor = this.color;
-                    ctx.shadowBlur = glow;
-                }
-                
+                ctx.fillStyle = `rgba(0, 212, 255, ${1 - this.z/width})`;
                 ctx.arc(x, y, size, 0, Math.PI * 2);
                 ctx.fill();
-                
-                // Reset shadow
-                ctx.shadowBlur = 0;
             }
         }
 
         // Initialize stars
-        for(let i = 0; i < 400; i++) {
+        for(let i = 0; i < 300; i++) {
             stars.push(new Star());
         }
 
-        // Track mouse for parallax
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
         // Animation loop
         function animate() {
-            ctx.fillStyle = 'rgba(2, 2, 2, 0.1)';
+            ctx.fillStyle = '#020202';
             ctx.fillRect(0, 0, width, height);
             
             stars.forEach(star => {
@@ -489,7 +295,7 @@
         function createShootingStar() {
             const star = document.createElement('div');
             star.className = 'shooting-star';
-            star.style.width = Math.random() * 150 + 100 + 'px';
+            star.style.width = Math.random() * 150 + 50 + 'px';
             star.style.left = Math.random() * window.innerWidth + 'px';
             star.style.top = Math.random() * window.innerHeight/2 + 'px';
             document.body.appendChild(star);
@@ -497,33 +303,29 @@
             setTimeout(() => star.remove(), 3000);
         }
 
-        // Advanced section animations
-        const animateSections = document.querySelectorAll('.animate-section');
-        
+        // Intersection Observer for fade-up animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const animation = entry.target.dataset.animation || 'fadeIn';
-                    entry.target.style.animation = `${animation} 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards`;
+                    entry.target.classList.add('visible');
                 }
             });
         }, { threshold: 0.1 });
 
-        animateSections.forEach(section => {
-            section.style.opacity = '0';
-            observer.observe(section);
+        document.querySelectorAll('.fade-up').forEach(element => {
+            observer.observe(element);
         });
 
         // Initialize animations
         animate();
-        setInterval(createShootingStar, 6000);
+        setInterval(createShootingStar, 8000);
 
         // Handle window resize
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             stars = [];
-            for(let i = 0; i < 400; i++) {
+            for(let i = 0; i < 300; i++) {
                 stars.push(new Star());
             }
         });
