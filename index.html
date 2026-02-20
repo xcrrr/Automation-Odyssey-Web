@@ -6,8 +6,18 @@
     <title>Automation Odyssey - Przyszłość Automatyzacji</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* [Poprzednie style pozostają] */
+        body {
+            background-color: #020202;
+            color: white;
+        }
         
+        .glass {
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+        }
+
         .case-study-card {
             backdrop-filter: blur(10px);
             background: rgba(255,255,255,0.05);
@@ -17,23 +27,19 @@
             margin-bottom: 2rem;
         }
 
-        .team-member {
+        .security-feature {
             backdrop-filter: blur(8px);
             background: rgba(255,255,255,0.03);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .security-feature {
             border-left: 2px solid rgba(255,255,255,0.1);
             padding-left: 1rem;
             margin: 1rem 0;
+        }
+
+        .contact-section {
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
         }
     </style>
 </head>
@@ -41,16 +47,16 @@
     <canvas id="starfield"></canvas>
 
     <main class="relative z-10">
-        <!-- [Poprzednie sekcje pozostają] -->
+        <!-- [Hero i Features sections remain unchanged] -->
 
-        <!-- Nowa sekcja: Case Studies -->
-        <section class="py-16 md:py-24">
+        <!-- Case Studies Section -->
+        <section class="py-16 md:py-24 glass">
             <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center">Branżowe Case Studies</h2>
+                <h2 class="text-4xl font-bold mb-12 text-center text-white">Branżowe Case Studies</h2>
                 
                 <div class="case-study-card">
-                    <h3 class="text-2xl font-bold mb-4">Gabinety Stomatologiczne</h3>
-                    <p class="mb-4">Automatyzacja zarządzania terminarzem, przypomnienia SMS, integracja z kartoteką pacjenta i systemem rozliczeń. Redukcja no-show o 78%.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Gabinety Stomatologiczne</h3>
+                    <p class="mb-4 text-white">Automatyzacja zarządzania terminarzem, przypomnienia SMS, integracja z kartoteką pacjenta i systemem rozliczeń. Redukcja no-show o 78%.</p>
                     <ul class="list-disc pl-6 text-white/60">
                         <li>Inteligentne planowanie wizyt z uwzględnieniem historii pacjenta</li>
                         <li>Automatyczna kwalifikacja pilności przypadków</li>
@@ -59,8 +65,8 @@
                 </div>
 
                 <div class="case-study-card">
-                    <h3 class="text-2xl font-bold mb-4">Firmy Budowlane</h3>
-                    <p class="mb-4">System zarządzania ekipami, materiałami i harmonogramami prac. Optymalizacja logistyki i redukcja przestojów o 43%.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Firmy Budowlane</h3>
+                    <p class="mb-4 text-white">System zarządzania ekipami, materiałami i harmonogramami prac. Optymalizacja logistyki i redukcja przestojów o 43%.</p>
                     <ul class="list-disc pl-6 text-white/60">
                         <li>Automatyczne przydzielanie zleceń na podstawie lokalizacji</li>
                         <li>Predykcja zapotrzebowania na materiały</li>
@@ -69,8 +75,8 @@
                 </div>
 
                 <div class="case-study-card">
-                    <h3 class="text-2xl font-bold mb-4">E-commerce</h3>
-                    <p class="mb-4">Pełna automatyzacja obsługi klienta i procesów magazynowych. Wzrost konwersji o 156%.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">E-commerce</h3>
+                    <p class="mb-4 text-white">Pełna automatyzacja obsługi klienta i procesów magazynowych. Wzrost konwersji o 156%.</p>
                     <ul class="list-disc pl-6 text-white/60">
                         <li>Personalizacja ścieżki zakupowej</li>
                         <li>Predykcyjne uzupełnianie stanów magazynowych</li>
@@ -80,49 +86,29 @@
             </div>
         </section>
 
-        <!-- Nowa sekcja: Standard Bezpieczeństwa -->
-        <section class="py-16 md:py-24 bg-black/30">
+        <!-- Security Standards Section -->
+        <section class="py-16 md:py-24 glass">
             <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center">Standard Bezpieczeństwa Odyssey</h2>
+                <h2 class="text-4xl font-bold mb-12 text-center text-white">Standard Bezpieczeństwa Odyssey</h2>
                 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="security-feature">
-                        <h3 class="text-xl font-bold mb-3">Izolacja Procesów OpenClaw</h3>
-                        <p>Każdy proces automatyzacji działa w odizolowanym środowisku, eliminując ryzyko wycieku danych.</p>
+                        <h3 class="text-xl font-bold mb-3 text-white">Izolacja Procesów OpenClaw</h3>
+                        <p class="text-white">Każdy proces automatyzacji działa w odizolowanym środowisku, eliminując ryzyko wycieku danych.</p>
                     </div>
                     <div class="security-feature">
-                        <h3 class="text-xl font-bold mb-3">Sandboxing Danych</h3>
-                        <p>Wielowarstwowa ochrona z wykorzystaniem zaawansowanej kryptografii i tokenizacji.</p>
+                        <h3 class="text-xl font-bold mb-3 text-white">Sandboxing Danych</h3>
+                        <p class="text-white">Wielowarstwowa ochrona z wykorzystaniem zaawansowanej kryptografii i tokenizacji.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nowa sekcja: Zespół -->
-        <section class="py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center">Nasz Zespół</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="team-member">
-                        <h3 class="text-2xl font-bold mb-2">Adam</h3>
-                        <p class="text-lg text-white/80 mb-4">Decision Architect</p>
-                        <p class="text-white/60">Ekspert w dziedzinie architektury systemów decyzyjnych i automatyzacji procesów biznesowych.</p>
-                    </div>
-                    <div class="team-member">
-                        <h3 class="text-2xl font-bold mb-2">Familiar</h3>
-                        <p class="text-lg text-white/80 mb-4">Second Mind</p>
-                        <p class="text-white/60">Specjalista ds. optymalizacji procesów i integracji systemów AI.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja kontaktowa -->
-        <section class="py-16 md:py-24 bg-black/30">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold mb-8">Kontakt</h2>
-                <div class="space-y-4">
+        <!-- Contact Section -->
+        <section class="py-16 md:py-24 glass">
+            <div class="max-w-7xl mx-auto px-4 text-center contact-section">
+                <h2 class="text-4xl font-bold mb-8 text-white">Kontakt</h2>
+                <div class="space-y-4 text-white">
                     <p><strong>Telefon:</strong> +48 729 086 144</p>
                     <p><strong>Email:</strong> automationodyssey@gmail.com</p>
                     <p><strong>Adres:</strong> ul. Niemierzyńska 17, Technopark Pomerania, Szczecin, Polska</p>
@@ -131,10 +117,8 @@
         </section>
     </main>
 
-    <!-- [Footer i podstrony terms/privacy pozostają bez zmian] -->
-
     <script>
-        // [Poprzedni kod JavaScript pozostaje]
+        // [Previous JavaScript code remains unchanged]
     </script>
 </body>
 </html>
