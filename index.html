@@ -13,7 +13,6 @@
             color: white; 
             overflow-x: hidden;
             scroll-behavior: smooth;
-            cursor: default;
         }
         .glass { 
             background: rgba(255, 255, 255, 0.05);
@@ -76,9 +75,6 @@
             height: 100%;
             z-index: -1;
         }
-        .step-card { position: relative; }
-        .step-card::before { content: ""; position: absolute; top: 50%; right: -30px; height: 2px; width: 60px; background: rgba(0, 212, 255, 0.2); }
-        .step-card:last-child::before { display: none; }
     </style>
 </head>
 <body>
@@ -87,7 +83,7 @@
     <nav class="fixed w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center glass px-6 py-3">
             <div class="text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span></div>
-            <a href="https://cal.com/automationodyssey/konsultacja-ai" class="hidden md:block bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
+            <a href="#contact" class="hidden md:block bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
         </div>
     </nav>
 
@@ -132,102 +128,12 @@
             </div>
         </section>
 
-        <!-- Metodologia Section -->
-        <section class="py-32 px-6 bg-black/30 fade-up">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16">Nasza Metodologia</h2>
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="step-card glass p-10">
-                        <div class="text-3xl mb-4">01</div>
-                        <h3 class="text-xl font-bold mb-4">Audyt & Discovery</h3>
-                        <p class="text-white/50">Kompleksowa analiza procesów biznesowych i identyfikacja potencjału automatyzacji z wykorzystaniem infrastruktury agentycznej.</p>
-                    </div>
-                    <div class="step-card glass p-10">
-                        <div class="text-3xl mb-4">02</div>
-                        <h3 class="text-xl font-bold mb-4">Wdrożenie & Integracja</h3>
-                        <p class="text-white/50">Implementacja dedykowanych agentów AI w bezpiecznym środowisku sandboxowym z pełną integracją systemową.</p>
-                    </div>
-                    <div class="step-card glass p-10">
-                        <div class="text-3xl mb-4">03</div>
-                        <h3 class="text-xl font-bold mb-4">Optymalizacja & Skala</h3>
-                        <p class="text-white/50">Ciągłe doskonalenie modeli AI i rozszerzanie automatyzacji na kolejne obszary operacyjne.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Zastosowania Biznesowe -->
-        <section class="py-32 px-6 fade-up">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16">Zastosowania Biznesowe</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="glass p-8">
-                        <div class="text-4xl mb-6">🌱</div>
-                        <h3 class="text-xl font-bold mb-4">OZE & HVAC</h3>
-                        <p class="text-white/50">Inteligentne voiceboty kwalifikujące leady i umawiające audyty energetyczne z 92% skutecznością konwersji.</p>
-                    </div>
-                    <div class="glass p-8">
-                        <div class="text-4xl mb-6">📊</div>
-                        <h3 class="text-xl font-bold mb-4">Reaktywacja Baz</h3>
-                        <p class="text-white/50">System multi-agentowy reaktywujący nieaktywne bazy klientów poprzez personalizowaną komunikację omnichannel.</p>
-                    </div>
-                    <div class="glass p-8">
-                        <div class="text-4xl mb-6">🤖</div>
-                        <h3 class="text-xl font-bold mb-4">AI Support 24/7</h3>
-                        <p class="text-white/50">Zaawansowana obsługa klienta wykorzystująca LLM nowej generacji z kontekstową pamięcią długoterminową.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="py-32 px-6 bg-black/30 fade-up">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16">Często Zadawane Pytania</h2>
-                <div class="space-y-6">
-                    <div class="glass p-6">
-                        <h3 class="text-xl font-bold mb-3">Jak zapewniacie bezpieczeństwo danych?</h3>
-                        <p class="text-white/50">Wykorzystujemy prywatną infrastrukturę OpenClaw z izolowanym środowiskiem sandboxowym. Twoje dane nigdy nie opuszczają Twojego ekosystemu.</p>
-                    </div>
-                    <div class="glass p-6">
-                        <h3 class="text-xl font-bold mb-3">Jaki jest czas wdrożenia?</h3>
-                        <p class="text-white/50">Pierwsze rezultaty w 14 dni. Pełne wdrożenie i optymalizacja zajmuje 30-45 dni, w zależności od skali operacji.</p>
-                    </div>
-                    <div class="glass p-6">
-                        <h3 class="text-xl font-bold mb-3">Czy zintegrujecie się z naszym CRM?</h3>
-                        <p class="text-white/50">Tak, zapewniamy pełną integrację z popularnymi systemami CRM oraz możliwość stworzenia dedykowanych konektorów API.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
+        <!-- Contact -->
         <section id="contact" class="py-32 px-6 fade-up">
-            <div class="max-w-7xl mx-auto">
-                <div class="glass p-12 grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-6">Rozpocznij Transformację</h2>
-                        <p class="text-white/50 mb-8">Umów bezpłatną konsultację i poznaj potencjał AI w Twojej firmie.</p>
-                        <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary inline-block">Zarezerwuj Termin</a>
-                    </div>
-                    <div class="glass bg-white/5 p-8 rounded-2xl">
-                        <form class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Nazwa firmy</label>
-                                <input type="text" class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Wiadomość</label>
-                                <textarea class="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 h-32"></textarea>
-                            </div>
-                            <button type="button" class="btn-primary w-full">Wyślij</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="max-w-3xl mx-auto glass p-12 text-center">
+                <h2 class="text-3xl font-bold mb-6">Rozpocznij Transformację</h2>
+                <p class="text-white/60 mb-8">Umów bezpłatną konsultację i poznaj możliwości AI dla Twojej firmy</p>
+                <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary inline-block">Zarezerwuj Termin</a>
             </div>
         </section>
     </main>
