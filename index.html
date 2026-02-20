@@ -1,181 +1,111 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Automation Odyssey | AI Automation Agency Szczecin | Voiceboty dla Firm</title>
-    <meta name="description" content="Lider automatyzacji AI w Szczecinie. Wdrażamy autonomiczne voiceboty, chatboty i systemy Speed-to-Lead dla firm budowlanych i usługowych. Zwiększ zyski dzięki AI." />
-    <meta name="keywords" content="AI Szczecin, automatyzacja firm, voiceboty dla firm, chatboty AI, agencja AI polska, automatyzacja dekarstwo, rekrutacja AI" />
-    <meta property="og:title" content="Automation Odyssey | Future of Business Autonomy" />
-    <meta property="og:description" content="Autonomiczne systemy AI, które sprzedają i rekrutują za Ciebie. Szczecin & Global." />
-    <meta property="og:image" content="https://automationodyssey.pl/assets/og-image.png" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Odyssey | Standard Agentyczny 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Automation Odyssey",
-      "image": "https://automationodyssey.pl/logo.png",
-      "@id": "https://automationodyssey.pl",
-      "url": "https://automationodyssey.pl",
-      "telephone": "+48729086144",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Niemierzyńska 17",
-        "addressLocality": "Szczecin",
-        "postalCode": "71-441",
-        "addressCountry": "PL"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 53.447,
-        "longitude": 14.542
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-        ],
-        "opens": "00:00",
-        "closes": "23:59"
-      }
-    }
-    </script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              heading: ['Poppins', 'sans-serif'],
-            },
-            colors: {
-              dark: '#020202',
-              primary: '#00d4ff',
-              secondary: '#6366f1',
-              accent: '#ff006e',
-            },
-            transitionTimingFunction: {
-              'luxury': 'cubic-bezier(0.16, 1, 0.3, 1)',
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'shine': 'shine 4s linear infinite',
-              'scan': 'scan 4s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              shine: {
-                '0%': { backgroundPosition: '200% center' },
-                '100%': { backgroundPosition: '-200% center' },
-              },
-              scan: {
-                '0%': { top: '0%', opacity: '0' },
-                '50%': { opacity: '0.5' },
-                '100%': { top: '100%', opacity: '0' },
-              }
-            }
-          },
-        },
-      }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-      html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-      body {
-        background-color: #020202;
-        color: #ffffff;
-        overflow-x: hidden;
-        font-family: 'Inter', sans-serif;
-        line-height: 1.5;
-      }
-      
-      #root { overflow-x: hidden; }
-
-      .gradient-text {
-        background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #6366f1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .btn-luxury {
-        background: #ffffff;
-        color: #000;
-        padding: 1.25rem 3rem;
-        border-radius: 9999px;
-        font-weight: 700;
-        font-size: 1rem;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid white;
-        white-space: nowrap;
-        cursor: pointer;
-      }
-      .btn-luxury:hover {
-        background: #00d4ff;
-        border-color: #00d4ff;
-        transform: translateY(-2px);
-      }
-      
-      /* Pure typography fixes for mobile */
-      h1 { letter-spacing: -0.05em !important; }
-      @media (max-width: 640px) {
-        h1 { line-height: 1.05 !important; }
-      }
-
-      ::selection {
-        background-color: #00d4ff;
-        color: #020202;
-      }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020202; color: white; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%); }
+        .text-gradient { background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-primary { background: #fff; color: #000; padding: 12px 32px; border-radius: 99px; font-weight: 700; transition: 0.3s; }
+        .btn-primary:hover { background: #00d4ff; transform: translateY(-2px); }
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
     </style>
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "konsultacja-ai", {origin:"https://app.cal.com"});
-  Cal.ns["konsultacja-ai"]("ui", {"theme":"dark","cssVarsPerTheme":{"light":{"cal-brand":"#292929"},"dark":{"cal-brand":"#ffffff"}},"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^18.3.1",
-    "react-dom/": "https://esm.sh/react-dom@^18.3.1/",
-    "react/": "https://esm.sh/react@^18.3.1/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.344.0"
-  }
-}
-</script>
-  <script type="module" src="/src/index.tsx"></script>
 </head>
-  <body>
-    <div id="root"></div>
-    <!-- Hidden SEO FAQ for Local Ranking -->
-    <div style="display:none;" aria-hidden="true">
-      <h3>Automatyzacja procesów w firmach budowlanych Szczecin</h3>
-      <p>Jakie korzyści daje AI dla dekarzy w Szczecinie? Automation Odyssey wdraża voiceboty, które odbierają telefony od klientów 24/7, rezerwują terminy spotkań i automatyzują rekrutację pracowników fizycznych. Dzięki naszym systemom Speed-to-Lead, firmy budowlane ze Szczecina i okolic zwiększają konwersję z zapytań o 40%.</p>
-      <h3>Voiceboty dla firm usługowych Zachodniopomorskie</h3>
-      <p>Nasza agencja AI specjalizuje się w tworzeniu autonomicznych agentów głosowych dla branży HVAC, okiennej i dekarskiej. Obsługujemy klientów w Szczecinie, Policach i Stargardzie.</p>
-    </div>
-  </body>
+<body>
+    <div id="canvas-container"><canvas id="nebula"></canvas></div>
+
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass px-6 py-3">
+            <div class="text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-primary text-[#00d4ff]">ODYSSEY</span></div>
+            <a href="https://cal.com/konsultacja-ai" class="hidden md:block bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center pt-20 hero-gradient">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold mb-6 tracking-widest text-[#00d4ff]">STANDARD AGENTYCZNY 2026</div>
+                <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tight leading-none">
+                    Twoja Firma na <br><span class="text-gradient">Autopilocie AI</span>
+                </h1>
+                <p class="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Wdrażamy bezpieczne, autonomiczne systemy AI, które sprzedają, obsługują klientów i optymalizują procesy 24/7. Bez błędów, bez przerw.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="https://cal.com/konsultacja-ai" class="btn-primary">Rozpocznij Transformację</a>
+                    <a href="#features" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/5 transition">Nasze Rozwiązania</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="glass p-10 hover:border-white/20 transition group">
+                    <div class="text-4xl mb-6">🎙️</div>
+                    <h3 class="text-xl font-bold mb-4">Voiceboty 2.4 High-Brevity</h3>
+                    <p class="text-white/50 leading-relaxed">Autonomiczni agenci głosowi odbierający 100% połączeń. Umawiają wizyty i domykają sprzedaż w < 30s.</p>
+                </div>
+                <div class="glass p-10 hover:border-white/20 transition group">
+                    <div class="text-4xl mb-6">⚡</div>
+                    <h3 class="text-xl font-bold mb-4">Speed-to-Lead Automation</h3>
+                    <p class="text-white/50 leading-relaxed">Systemy natychmiastowej reakcji. Twoje AI oddzwania do leada, zanim konkurencja zdąży otworzyć maila.</p>
+                </div>
+                <div class="glass p-10 hover:border-white/20 transition group">
+                    <div class="text-4xl mb-6">🛡️</div>
+                    <h3 class="text-xl font-bold mb-4">Secure Agent Sandbox</h3>
+                    <p class="text-white/50 leading-relaxed">Prywatna infrastruktura OpenClaw. Dane Twojej firmy są bezpieczne i nigdy nie trafiają do publicznych LLM.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center text-white/20 text-xs tracking-widest border-t border-white/5">
+        &copy; 2026 AUTOMATION ODYSSEY AGENCY | SZCZECIN & GLOBAL
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('nebula');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            stars = Array(150).fill().map(() => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                z: Math.random() * width,
+                o: Math.random()
+            }));
+        }
+
+        function draw() {
+            ctx.fillStyle = '#020202';
+            ctx.fillRect(0, 0, width, height);
+            stars.forEach(s => {
+                s.z -= 0.5;
+                if (s.z <= 0) s.z = width;
+                let x = (s.x - width/2) * (width/s.z) + width/2;
+                let y = (s.y - height/2) * (width/s.z) + height/2;
+                let radius = (width/s.z) * 0.8;
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(0, 212, 255, ${s.o})`;
+                ctx.arc(x, y, radius, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+    </script>
+</body>
 </html>
