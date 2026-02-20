@@ -85,7 +85,7 @@
 
     <nav class="fixed w-full z-50 px-4 md:px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center glass px-4 md:px-6 py-3">
-            <div class="text-lg md:text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span></div>
+            <div class="text-base md:text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span></div>
             <div class="flex gap-2 md:gap-4">
                 <a href="#contact" class="hidden md:block bg-white/10 hover:bg-white/20 px-4 md:px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
                 <a href="tel:+48729086144" class="bg-white/10 hover:bg-white/20 px-4 md:px-5 py-2 rounded-full text-sm font-semibold transition">📞</a>
@@ -165,6 +165,100 @@
         &copy; 2026 AUTOMATION ODYSSEY AGENCY | SZCZECIN & GLOBAL
     </footer>
 
-    [Poprzedni skrypt JavaScript pozostaje bez zmian]
+    
+<script>
+        // Starfield Effect
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        let stars = [];
+        
+        class Star {
+            constructor() {
+                this.x = Math.random() * width - width/2;
+                this.y = Math.random() * height - height/2;
+                this.z = Math.random() * width;
+                this.speed = 1;
+            }
+            
+            move() {
+                this.z = this.z - this.speed;
+                if (this.z <= 0) {
+                    this.z = width;
+                    this.x = Math.random() * width - width/2;
+                    this.y = Math.random() * height - height/2;
+                }
+            }
+            
+            draw() {
+                let x = (this.x/this.z) * width + width/2;
+                let y = (this.y/this.z) * height + height/2;
+                let size = (1 - this.z/width) * 3;
+                
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(0, 212, 255, ${1 - this.z/width})`;
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Initialize stars
+        for(let i = 0; i < 300; i++) {
+            stars.push(new Star());
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = '#020202';
+            ctx.fillRect(0, 0, width, height);
+            
+            stars.forEach(star => {
+                star.move();
+                star.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        // Shooting stars
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.width = Math.random() * 150 + 50 + 'px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.top = Math.random() * window.innerHeight/2 + 'px';
+            document.body.appendChild(star);
+            
+            setTimeout(() => star.remove(), 3000);
+        }
+
+        // Intersection Observer for fade-up animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Initialize animations
+        animate();
+        setInterval(createShootingStar, 8000);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            stars = [];
+            for(let i = 0; i < 300; i++) {
+                stars.push(new Star());
+            }
+        });
+    </script>
 </body>
 </html>
