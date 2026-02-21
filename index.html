@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <meta name="trustpilot-one-time-domain-verification-id" content="2c8a71f1-883a-4363-9f50-f88e70c24be8"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Odyssey | Standard Agentyczny 2026</title>
@@ -15,19 +16,20 @@
             scroll-behavior: smooth;
         }
         .glass { 
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass:hover {
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
-            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+            transform: translateY(-8px);
         }
         .hero-gradient { 
-            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
         }
         .text-gradient { 
             background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #6366f1 100%);
@@ -37,15 +39,18 @@
         .btn-primary { 
             background: #fff;
             color: #000;
-            padding: 12px 32px;
+            padding: 14px 40px;
             border-radius: 99px;
-            font-weight: 700;
-            transition: 0.3s;
+            font-weight: 800;
+            transition: 0.4s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         .btn-primary:hover { 
             background: #00d4ff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
         }
         .shooting-star {
             position: absolute;
@@ -53,15 +58,16 @@
             background: linear-gradient(90deg, #fff, transparent);
             animation: shoot 3s ease-out infinite;
             opacity: 0;
+            pointer-events: none;
         }
         @keyframes shoot {
             0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
-            100% { transform: translateX(1000px) translateY(1000px) rotate(45deg); opacity: 0; }
+            100% { transform: translateX(1200px) translateY(1200px) rotate(45deg); opacity: 0; }
         }
         .fade-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .fade-up.visible {
             opacity: 1;
@@ -75,74 +81,251 @@
             height: 100%;
             z-index: -1;
         }
+        .stat-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            border-left: 2px solid #00d4ff;
+        }
+        .step-number {
+            font-size: 8rem;
+            line-height: 1;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            right: 0;
+            top: -20px;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
     <canvas id="starfield"></canvas>
 
-    <nav class="fixed w-full z-50 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass px-6 py-3">
-            <div class="text-xl font-extrabold tracking-tighter">AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span></div>
-            <a href="#contact" class="hidden md:block bg-white/10 hover:bg-white/20 px-5 py-2 rounded-full text-sm font-semibold transition">Zarezerwuj Demo</a>
+    <nav class="fixed w-full z-50 px-6 py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass px-8 py-4">
+            <div class="text-xl font-extrabold tracking-tighter flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse"></div>
+                AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-white/60">
+                <a href="#features" class="hover:text-white transition">Usługi</a>
+                <a href="#results" class="hover:text-white transition">Wyniki</a>
+                <a href="#process" class="hover:text-white transition">Proces</a>
+                <a href="#faq" class="hover:text-white transition">FAQ</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-white/10 hover:bg-white/20 border border-white/10 px-6 py-2 rounded-full text-sm font-bold transition">Konsultacja AI</a>
         </div>
     </nav>
 
     <main class="relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center pt-20 hero-gradient fade-up">
-            <div class="max-w-4xl mx-auto text-center px-6">
-                <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold mb-6 tracking-widest text-[#00d4ff]">
-                    TWOJA PRZEWAGA NAD KONKURENCJĄ
+        <section class="min-h-screen flex items-center justify-center pt-32 pb-20 hero-gradient fade-up">
+            <div class="max-w-5xl mx-auto text-center px-6">
+                <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black mb-8 tracking-[0.3em] text-[#00d4ff] uppercase">
+                    Agencja Automatyzacji AI Przyszłości
                 </div>
-                <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tight leading-none">
-                    Twoja Firma na <br><span class="text-gradient">Autopilocie AI</span>
+                <h1 class="text-6xl md:text-9xl font-extrabold mb-10 tracking-tight leading-[0.9]">
+                    Zastąp Chaos <br><span class="text-gradient">Algorytmem</span>
                 </h1>
-                <p class="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Wdrażamy bezpieczne, autonomiczne systemy AI, które sprzedają, obsługują klientów i optymalizują procesy 24/7. Bez błędów, bez przerw.
+                <p class="text-xl md:text-2xl text-white/50 mb-14 max-w-3xl mx-auto leading-relaxed font-light">
+                    Nie budujemy prostych botów. Wdrażamy <span class="text-white font-semibold">Cyfrowych Pracowników</span>, którzy myślą, sprzedają i skalują Twój biznes, podczas gdy Ty odpoczywasz.
                 </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="#contact" class="btn-primary">Rozpocznij Transformację</a>
-                    <a href="#features" class="glass px-8 py-3 rounded-full font-bold hover:bg-white/5 transition">Nasze Rozwiązania</a>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#contact" class="btn-primary">
+                        Uwolnij Mój Czas
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#features" class="text-white/40 hover:text-white font-bold transition flex items-center gap-2 underline underline-offset-8">
+                        Zobacz co potrafimy
+                    </a>
+                </div>
+                
+                <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass p-6 text-left">
+                        <div class="text-[#00d4ff] font-black text-2xl">0.2s</div>
+                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Latency</div>
+                    </div>
+                    <div class="glass p-6 text-left">
+                        <div class="text-[#00d4ff] font-black text-2xl">100%</div>
+                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Capture Rate</div>
+                    </div>
+                    <div class="glass p-6 text-left">
+                        <div class="text-[#00d4ff] font-black text-2xl">24/7</div>
+                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Availability</div>
+                    </div>
+                    <div class="glass p-6 text-left">
+                        <div class="text-[#00d4ff] font-black text-2xl">ROI</div>
+                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Driven</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features -->
-        <section id="features" class="py-16 px-6">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-                <div class="glass p-10 fade-up">
-                    <div class="text-4xl mb-6">🎙️</div>
-                    <h3 class="text-xl font-bold mb-4">Voiceboty 2.4 High-Brevity</h3>
-                    <p class="text-white/50 leading-relaxed">Autonomiczni agenci głosowi odbierający 100% połączeń. Umawiają wizyty i domykają sprzedaż w < 30s.</p>
+        <!-- Solutions Grid (Expanded) -->
+        <section id="features" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20">
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter">Ekosystem <span class="text-[#00d4ff]">Odyssey</span></h2>
+                    <p class="text-white/40 text-xl max-w-2xl">Kompletny zestaw narzędzi do dominacji rynkowej opartej o AI.</p>
                 </div>
-                <div class="glass p-10 fade-up" style="transition-delay: 0.2s">
-                    <div class="text-4xl mb-6">⚡</div>
-                    <h3 class="text-xl font-bold mb-4">Speed-to-Lead Automation</h3>
-                    <p class="text-white/50 leading-relaxed">Systemy natychmiastowej reakcji. Twoje AI oddzwania do leada, zanim konkurencja zdąży otworzyć maila.</p>
-                </div>
-                <div class="glass p-10 fade-up" style="transition-delay: 0.4s">
-                    <div class="text-4xl mb-6">🛡️</div>
-                    <h3 class="text-xl font-bold mb-4">Secure Agent Sandbox</h3>
-                    <p class="text-white/50 leading-relaxed">Prywatna infrastruktura. Dane Twojej firmy są bezpieczne i nigdy nie trafiają do publicznych systemów AI.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass p-12 fade-up relative overflow-hidden group">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">🎙️</div>
+                        <h3 class="text-2xl font-bold mb-4">Voice AI Agents</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Autonomiczne systemy głosowe (Vapi/ElevenLabs), które brzmią jak człowiek. Obsługują inbound, umawiają kalendarz i robią follow-up.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• Zero opóźnień (Ultra Low Latency)</li>
+                            <li>• Integracja z CRM (GoHighLevel)</li>
+                            <li>• Pamięć kontekstowa klienta</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass p-12 fade-up relative overflow-hidden group" style="transition-delay: 0.1s">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">⚡</div>
+                        <h3 class="text-2xl font-bold mb-4">Speed-to-Lead</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Gdy klient zostawia kontakt, Twoje AI dzwoni lub pisze w ciągu 30 sekund. Domykasz sprzedaż, zanim konkurencja się obudzi.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• Reakcja < 1 min</li>
+                            <li>• Wielokanałowe dotarcie</li>
+                            <li>• Kwalifikacja automatyczna</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass p-12 fade-up relative overflow-hidden group" style="transition-delay: 0.2s">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">🧠</div>
+                        <h3 class="text-2xl font-bold mb-4">Agentic Workflows</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Złożone automatyzacje, które "myślą". AI analizuje dane, tworzy raporty i podejmuje decyzje operacyjne za Ciebie.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• Integracje Zapier/Make</li>
+                            <li>• Budowa bazy wiedzy (RAG)</li>
+                            <li>• Automatyczne faktury i maile</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass p-12 fade-up relative overflow-hidden group" style="transition-delay: 0.3s">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">📈</div>
+                        <h3 class="text-2xl font-bold mb-4">Lead Reactivation</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Wyciągamy pieniądze z Twojej "martwej" bazy danych. AI kontaktuje się ze starymi leadami i zamienia ich w nowych klientów.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• SMS / Voice Blast</li>
+                            <li>• Personalizowane oferty</li>
+                            <li>• Skalowalność masowa</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass p-12 fade-up relative overflow-hidden group" style="transition-delay: 0.4s">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">🛡️</div>
+                        <h3 class="text-2xl font-bold mb-4">Enterprise Security</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Wdrażamy AI w standardzie OpenClaw. Twoje dane nie uczą publicznych modeli. Pełna kontrola i prywatność.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• Lokalne bazy danych</li>
+                            <li>• Szyfrowanie End-to-End</li>
+                            <li>• Zgodność z RODO/GDPR</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass p-12 fade-up relative overflow-hidden group" style="transition-delay: 0.5s">
+                        <div class="text-5xl mb-8 group-hover:scale-110 transition duration-500">🚀</div>
+                        <h3 class="text-2xl font-bold mb-4">Custom AI Dev</h3>
+                        <p class="text-white/40 leading-relaxed mb-6">Masz nietypowy problem? Projektujemy dedykowane rozwiązania od podstaw, dopasowane do specyfiki Twojej branży.</p>
+                        <ul class="text-sm text-[#00d4ff]/80 space-y-2 font-semibold">
+                            <li>• API First Approach</li>
+                            <li>• Dedykowane szkolenia AI</li>
+                            <li>• Wsparcie techniczne 24/7</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact -->
-        <section id="contact" class="py-16 px-6 fade-up">
-            <div class="max-w-3xl mx-auto glass p-12 text-center">
-                <h2 class="text-3xl font-bold mb-6">Rozpocznij Transformację</h2>
-                <p class="text-white/60 mb-8">Umów bezpłatną konsultację i poznaj możliwości AI dla Twojej firmy</p>
-                <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary inline-block">Zarezerwuj Termin</a>
+        <!-- Process Section (New) -->
+        <section id="process" class="py-32 px-6 bg-white/[0.01]">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black mb-20 text-center">3 Kroki do <span class="text-[#00d4ff]">Wolności</span></h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="relative p-10 glass fade-up">
+                        <div class="step-number">01</div>
+                        <h4 class="text-2xl font-bold mb-4">Audyt & Strategia</h4>
+                        <p class="text-white/40 leading-relaxed">Analizujemy Twoje procesy, szukamy wąskich gardeł i projektujemy architekturę AI, która da największy ROI.</p>
+                    </div>
+                    <div class="relative p-10 glass fade-up" style="transition-delay: 0.2s">
+                        <div class="step-number">02</div>
+                        <h4 class="text-2xl font-bold mb-4">Budowa & Testy</h4>
+                        <p class="text-white/40 leading-relaxed">Konfigurujemy agentów, łączymy systemy i prowadzimy rygorystyczne testy, abyś miał pewność, że wszystko działa idealnie.</p>
+                    </div>
+                    <div class="relative p-10 glass fade-up" style="transition-delay: 0.4s">
+                        <div class="step-number">03</div>
+                        <h4 class="text-2xl font-bold mb-4">Skalowanie</h4>
+                        <p class="text-white/40 leading-relaxed">Odpalasz system i patrzysz, jak AI przejmuje powtarzalne zadania. Jesteśmy z Tobą, optymalizując wyniki każdego dnia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (New) -->
+        <section id="faq" class="py-32 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-black mb-16 text-center">Częste <span class="text-[#00d4ff]">Pytania</span></h2>
+                <div class="space-y-6">
+                    <div class="glass p-8 fade-up">
+                        <h4 class="text-xl font-bold mb-2">Czy to jest bezpieczne?</h4>
+                        <p class="text-white/40">Tak. Korzystamy z dedykowanych serwerów i prywatnych instancji modeli. Twoje dane firmowe są odizolowane.</p>
+                    </div>
+                    <div class="glass p-8 fade-up">
+                        <h4 class="text-xl font-bold mb-2">Ile to kosztuje?</h4>
+                        <p class="text-white/40">Każde wdrożenie jest inne, ale nasze systemy zazwyczaj zwracają się w ciągu pierwszych 2-3 miesięcy poprzez oszczędność czasu i odzyskane leady.</p>
+                    </div>
+                    <div class="glass p-8 fade-up">
+                        <h4 class="text-xl font-bold mb-2">Czy boty brzmią jak roboty?</h4>
+                        <p class="text-white/40">Dzięki technologii ElevenLabs i Vapi, nasi agenci głosowi są niemal nieodróżnialni od człowieka. Potrafią operować emocjami, pauzami i śmiechem.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section (Enhanced) -->
+        <section id="contact" class="py-32 px-6 fade-up">
+            <div class="max-w-4xl mx-auto glass p-16 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00d4ff] to-transparent"></div>
+                <h2 class="text-4xl md:text-6xl font-black mb-8">Gotowy na <span class="text-[#00d4ff]">Odyssey?</span></h2>
+                <p class="text-xl text-white/50 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Nie czekaj, aż konkurencja Cię wyprzedzi. Zabezpiecz swoją pozycję rynkową dzięki technologii jutra.
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="https://cal.com/automationodyssey/konsultacja-ai" class="btn-primary">Zarezerwuj Demo 1:1</a>
+                    <a href="mailto:automationodyssey@gmail.com" class="px-10 py-4 rounded-full border border-white/10 hover:bg-white/5 transition font-bold flex items-center justify-center gap-2">
+                        Skontaktuj się Mailowo
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 text-center text-white/20 text-xs tracking-widest border-t border-white/5">
-        &copy; 2026 AUTOMATION ODYSSEY AGENCY | SZCZECIN & GLOBAL
+    <footer class="py-16 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-xl font-black tracking-tighter uppercase">
+                AUTOMATION <span class="text-[#00d4ff]">ODYSSEY</span>
+            </div>
+            <div class="text-white/20 text-[10px] uppercase font-bold tracking-[0.5em] text-center">
+                &copy; 2026 AUTOMATION ODYSSEY AGENCY | SZCZECIN | FUTURE DRIVEN
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-white/20 hover:text-[#00d4ff] transition">LinkedIn</a>
+                <a href="#" class="text-white/20 hover:text-[#00d4ff] transition">X (Twitter)</a>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Scroll to top on reload to prevent being stuck at the bottom
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         // Starfield Effect
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
@@ -155,7 +338,7 @@
                 this.x = Math.random() * width - width/2;
                 this.y = Math.random() * height - height/2;
                 this.z = Math.random() * width;
-                this.speed = 1;
+                this.speed = 0.5;
             }
             
             move() {
@@ -170,7 +353,7 @@
             draw() {
                 let x = (this.x/this.z) * width + width/2;
                 let y = (this.y/this.z) * height + height/2;
-                let size = (1 - this.z/width) * 3;
+                let size = (1 - this.z/width) * 2;
                 
                 ctx.beginPath();
                 ctx.fillStyle = `rgba(0, 212, 255, ${1 - this.z/width})`;
@@ -179,25 +362,20 @@
             }
         }
 
-        // Initialize stars
-        for(let i = 0; i < 300; i++) {
+        for(let i = 0; i < 250; i++) {
             stars.push(new Star());
         }
 
-        // Animation loop
         function animate() {
             ctx.fillStyle = '#020202';
             ctx.fillRect(0, 0, width, height);
-            
             stars.forEach(star => {
                 star.move();
                 star.draw();
             });
-            
             requestAnimationFrame(animate);
         }
 
-        // Shooting stars
         function createShootingStar() {
             const star = document.createElement('div');
             star.className = 'shooting-star';
@@ -205,11 +383,9 @@
             star.style.left = Math.random() * window.innerWidth + 'px';
             star.style.top = Math.random() * window.innerHeight/2 + 'px';
             document.body.appendChild(star);
-            
             setTimeout(() => star.remove(), 3000);
         }
 
-        // Intersection Observer for fade-up animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -222,16 +398,14 @@
             observer.observe(element);
         });
 
-        // Initialize animations
         animate();
-        setInterval(createShootingStar, 8000);
+        setInterval(createShootingStar, 6000);
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             stars = [];
-            for(let i = 0; i < 300; i++) {
+            for(let i = 0; i < 250; i++) {
                 stars.push(new Star());
             }
         });
