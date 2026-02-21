@@ -111,6 +111,9 @@
             border-radius: 50%;
             box-shadow: 0 0 15px #00d4ff;
         }
+        .vs-gradient {
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+        }
     </style>
 </head>
 <body>
@@ -124,7 +127,7 @@
             </div>
             <div class="hidden md:flex gap-8 text-sm font-medium text-white/60">
                 <a href="#features" class="hover:text-white transition">Usługi</a>
-                <a href="#results" class="hover:text-white transition">Wyniki</a>
+                <a href="#comparison" class="hover:text-white transition">Porównanie</a>
                 <a href="#process" class="hover:text-white transition">Proces</a>
                 <a href="#faq" class="hover:text-white transition">FAQ</a>
             </div>
@@ -154,23 +157,60 @@
                         Poznaj Proces
                     </a>
                 </div>
-                
-                <div id="results" class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto scroll-mt-32">
-                    <div class="glass p-6 text-left">
-                        <div class="text-[#00d4ff] font-black text-2xl">0.2s</div>
-                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Opóźnienie AI</div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section id="comparison" class="py-32 px-6 scroll-mt-24">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black mb-20 text-center tracking-tighter">Matematyka <span class="text-[#00d4ff]">Przyszłości</span></h2>
+                <div class="grid md:grid-cols-2 gap-8 relative">
+                    <div class="absolute inset-0 vs-gradient hidden md:block" style="width: 2px; left: 50%; transform: translateX(-50%);"></div>
+                    
+                    <!-- Human -->
+                    <div class="glass p-12 fade-up">
+                        <div class="text-white/20 text-sm font-bold uppercase tracking-widest mb-4">Tradycyjny Pracownik</div>
+                        <h3 class="text-3xl font-bold mb-8">Klasyczny Model</h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-center gap-4 text-white/40">
+                                <span class="text-red-500 font-bold">✕</span> Dostępność 8h dziennie (Pn-Pt)
+                            </li>
+                            <li class="flex items-center gap-4 text-white/40">
+                                <span class="text-red-500 font-bold">✕</span> Obsługuje tylko 1 połączenie naraz
+                            </li>
+                            <li class="flex items-center gap-4 text-white/40">
+                                <span class="text-red-500 font-bold">✕</span> Ryzyko pomyłek i zapomnianych leadów
+                            </li>
+                            <li class="flex items-center gap-4 text-white/40">
+                                <span class="text-red-500 font-bold">✕</span> Koszty składek, urlopów i sprzętu
+                            </li>
+                            <li class="flex items-center gap-4 text-white/40">
+                                <span class="text-red-500 font-bold">✕</span> Przerwy, zmęczenie, spadek formy
+                            </li>
+                        </ul>
                     </div>
-                    <div class="glass p-6 text-left">
-                        <div class="text-[#00d4ff] font-black text-2xl">100%</div>
-                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Odebranych Połączeń</div>
-                    </div>
-                    <div class="glass p-6 text-left">
-                        <div class="text-[#00d4ff] font-black text-2xl">24/7</div>
-                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Dostępność</div>
-                    </div>
-                    <div class="glass p-6 text-left">
-                        <div class="text-[#00d4ff] font-black text-2xl">NEW</div>
-                        <div class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Update 3.1 Live</div>
+
+                    <!-- AI Agent -->
+                    <div class="glass p-12 fade-up border-[#00d4ff]/30 bg-[#00d4ff]/5">
+                        <div class="text-[#00d4ff] text-sm font-bold uppercase tracking-widest mb-4">Agent AI Odyssey</div>
+                        <h3 class="text-3xl font-bold mb-8">Nowy Standard</h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-center gap-4">
+                                <span class="text-[#00d4ff] font-bold">✓</span> Gotowość 24/7/365 (również święta)
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <span class="text-[#00d4ff] font-bold">✓</span> Nielimitowana ilość rozmów naraz
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <span class="text-[#00d4ff] font-bold">✓</span> 100% precyzji w danych i kalendarzu
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <span class="text-[#00d4ff] font-bold">✓</span> Stały koszt bez "ukrytych wydatków"
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <span class="text-[#00d4ff] font-bold">✓</span> Nigdy nie śpi, nigdy nie traci formy
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
