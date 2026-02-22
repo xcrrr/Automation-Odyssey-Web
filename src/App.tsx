@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { Features } from '../components/Features';
+import { Comparison } from '../components/Comparison';
 import { HowItWorks } from '../components/HowItWorks';
 import { FAQ } from '../components/FAQ';
 import { Footer } from '../components/Footer';
 import { ChatWidget } from '../components/ChatWidget';
 import { PrivacyPolicy, TermsOfService } from '../components/Legal';
+import { LanguageProvider } from './LanguageContext';
 
 import { CelestialBackground } from '../components/CelestialBackground';
 
-function App() {
+function AppContent() {
   const [view, setView] = useState<'home' | 'privacy' | 'terms'>('home');
 
   useEffect(() => {
@@ -37,6 +39,7 @@ function App() {
       <Header />
       <main className="relative z-10">
         <Hero />
+        <Comparison />
         <Features />
         <HowItWorks />
         <FAQ />
@@ -44,6 +47,14 @@ function App() {
       <ChatWidget />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

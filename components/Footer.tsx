@@ -1,7 +1,10 @@
 import React from 'react';
 import { Compass, Mail, Phone, Twitter, Linkedin, Github } from 'lucide-react';
+import { useLanguage } from '../src/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer id="contact" className="bg-[#030303] pt-32 pb-16 border-t border-white/5 relative overflow-hidden">
       {/* Background Glow */}
@@ -19,7 +22,7 @@ export const Footer: React.FC = () => {
               <span className="font-heading font-black text-2xl tracking-tighter text-white">ODYSSEY</span>
             </div>
             <p className="text-gray-400 text-xl font-light leading-relaxed max-w-md mb-10">
-              Budujemy inteligencję, która uwalnia potencjał Twojego biznesu. Przyszłość nie jest do przewidzenia – jest do zaprojektowania.
+              {t.footer.mission}
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:border-white/40 transition-all"><Twitter size={20} /></a>
@@ -30,17 +33,17 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">Nawigacja</h4>
+            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">{t.footer.navTitle}</h4>
             <ul className="space-y-4">
-              <li><a href="#features" className="text-gray-500 hover:text-primary transition-colors font-medium">Strategia</a></li>
-              <li><a href="#how-it-works" className="text-gray-500 hover:text-primary transition-colors font-medium">Proces</a></li>
-              <li><a href="#faq" className="text-gray-500 hover:text-primary transition-colors font-medium">Wsparcie</a></li>
+              <li><a href="#features" className="text-gray-500 hover:text-primary transition-colors font-medium">{t.footer.strategy}</a></li>
+              <li><a href="#how-it-works" className="text-gray-500 hover:text-primary transition-colors font-medium">{t.footer.process}</a></li>
+              <li><a href="#faq" className="text-gray-500 hover:text-primary transition-colors font-medium">{t.footer.support}</a></li>
             </ul>
           </div>
 
           {/* Legal & Contact */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">Kontakt</h4>
+            <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8">{t.footer.contactTitle}</h4>
             <ul className="space-y-6">
               <li className="flex flex-col gap-1">
                 <span className="text-[10px] font-black text-gray-600 uppercase tracking-widest">Email</span>
@@ -56,11 +59,11 @@ export const Footer: React.FC = () => {
 
         <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
           <p className="text-gray-600 text-sm font-light">
-            &copy; {new Date().getFullYear()} Automation Odyssey. Created with passion in Szczecin.
+            &copy; {new Date().getFullYear()} Automation Odyssey. {t.footer.createdWith}
           </p>
           <div className="flex items-center gap-8">
-             <a href="#privacy" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-widest transition-colors">Privacy</a>
-             <a href="#terms" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-widest transition-colors">Terms</a>
+             <a href="#privacy" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-widest transition-colors">{t.footer.privacy}</a>
+             <a href="#terms" className="text-gray-600 hover:text-white text-xs font-black uppercase tracking-widest transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </div>

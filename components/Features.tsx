@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Bot, Zap, Target, BarChart3 } from 'lucide-react';
+import { useLanguage } from '../src/LanguageContext';
 
 const BentoCard = ({ icon: Icon, title, description, className = "" }: { icon: any, title: string, description: string, className?: string }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -36,38 +37,40 @@ const BentoCard = ({ icon: Icon, title, description, className = "" }: { icon: a
 };
 
 export const Features: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="features" className="py-20 md:py-32 px-6 bg-[#020205] relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-black mb-6 text-white">
-            Nasze <span className="gradient-text">Rozwiązania.</span>
+            {t.features.title} <span className="gradient-text">{t.features.titleHighlight}</span>
           </h2>
           <p className="text-base md:text-xl text-white/40 max-w-2xl font-light">
-            Projektujemy systemy, które nie tylko automatyzują, ale realnie zwiększają zysk Twojej firmy.
+            {t.features.description}
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <BentoCard 
             icon={Bot}
-            title="Wsparcie Głosowe 24/7"
-            description="Nasze inteligentne systemy przejmują 100% połączeń przychodzących. Rezerwują wizyty, odpowiadają na pytania i kwalifikują leady, podczas gdy Ty śpisz."
+            title={t.features.voiceSupport.title}
+            description={t.features.voiceSupport.description}
           />
           <BentoCard 
             icon={Zap}
-            title="Błyskawiczny Kontakt"
-            description="Badania pokazują, że kontakt w ciągu 5 minut zwiększa szansę na sprzedaż o 900%. Nasza automatyzacja oddzwania do klienta zanim ten zamknie Twoją stronę."
+            title={t.features.instantContact.title}
+            description={t.features.instantContact.description}
           />
           <BentoCard 
             icon={Target}
-            title="Odzyskiwanie Leadów"
-            description="Twoja stara baza danych to kopalnia złota. AI przeprowadza kampanie reaktywacyjne, które budzą uśpione kontakty i zamieniają je w realne zamówienia."
+            title={t.features.leadRecovery.title}
+            description={t.features.leadRecovery.description}
           />
           <BentoCard 
             icon={BarChart3}
-            title="Budowa Autorytetu"
-            description="Automatycznie monitorujemy satysfakcję klientów i kierujemy zadowolonych odbiorców do zostawienia 5 gwiazdek w Google Maps, budując Twoją dominację lokalną."
+            title={t.features.authorityBuilding.title}
+            description={t.features.authorityBuilding.description}
           />
         </div>
       </div>

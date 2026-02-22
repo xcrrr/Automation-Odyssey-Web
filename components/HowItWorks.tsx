@@ -1,14 +1,17 @@
 import React from 'react';
 import { Settings, Mic, Link, CheckCircle } from 'lucide-react';
-
-const steps = [
-  { id: 1, title: 'Audyt', description: 'Mapujemy Twoje obecne procesy i znajdujemy miejsca, w których tracisz czas i pieniądze.', Icon: Settings },
-  { id: 2, title: 'Architektura', description: 'Projektujemy dedykowaną inteligencję dopasowaną do tonu Twojej marki.', Icon: Mic },
-  { id: 3, title: 'Ekosystem', description: 'Integrujemy system z Twoimi narzędziami (CRM, Kalendarz, SMS) w jeden organizm.', Icon: Link },
-  { id: 4, title: 'Skalowanie', description: 'Uruchamiamy automatyzację i monitorujemy wzrost Twoich przychodów.', Icon: CheckCircle },
-];
+import { useLanguage } from '../src/LanguageContext';
 
 export const HowItWorks: React.FC = () => {
+  const { t } = useLanguage();
+  
+  const steps = [
+    { id: 1, title: t.howItWorks.steps.audit.title, description: t.howItWorks.steps.audit.description, Icon: Settings },
+    { id: 2, title: t.howItWorks.steps.architecture.title, description: t.howItWorks.steps.architecture.description, Icon: Mic },
+    { id: 3, title: t.howItWorks.steps.ecosystem.title, description: t.howItWorks.steps.ecosystem.description, Icon: Link },
+    { id: 4, title: t.howItWorks.steps.scaling.title, description: t.howItWorks.steps.scaling.description, Icon: CheckCircle },
+  ];
+
   const handleBookingClick = () => {
     window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
   };
@@ -20,10 +23,10 @@ export const HowItWorks: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-7xl font-heading font-black mb-6 text-white tracking-tighter uppercase">
-            Proces <span className="gradient-text">Odysei</span>
+            {t.howItWorks.title} <span className="gradient-text">{t.howItWorks.titleHighlight}</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto">
-            Od mapowania procesów do pełnej autonomii. Szybko, konkretnie, profesjonalnie.
+            {t.howItWorks.description}
           </p>
         </div>
 
@@ -42,7 +45,7 @@ export const HowItWorks: React.FC = () => {
 
         <div className="mt-24 flex justify-center">
            <button onClick={handleBookingClick} className="btn-luxury">
-            Umów Konsultację
+            {t.howItWorks.bookConsultation}
            </button>
         </div>
       </div>

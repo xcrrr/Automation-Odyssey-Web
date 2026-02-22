@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Menu, X, Calendar } from 'lucide-react';
+import { Compass, Menu, X, Calendar, Globe } from 'lucide-react';
+import { useLanguage } from '../src/LanguageContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleLanguage = () => setLanguage(language === 'pl' ? 'en' : 'pl');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,9 +52,9 @@ export const Header: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'Strategia', href: '#features' },
-    { name: 'Proces', href: '#how-it-works' },
-    { name: 'FAQ', href: '#faq' },
+    { name: t.header.strategy, href: '#features' },
+    { name: t.header.process, href: '#how-it-works' },
+    { name: t.header.faq, href: '#faq' },
   ];
 
   return (
@@ -67,7 +70,8 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between h-14">
           <div className="flex items-center gap-3 group cursor-pointer" onClick={() => {
             if (window.location.hash) {
-              window.location.href = '/';
+              window.location.hash = '';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -76,7 +80,7 @@ export const Header: React.FC = () => {
                 <Compass className="h-6 w-6" />
             </div>
             <span className="font-heading font-black text-xl tracking-tighter text-white">
-              ODYSSEY
+              AUTOMATION <span className="text-primary">ODYSSEY</span>
             </span>
           </div>
           
@@ -94,16 +98,31 @@ export const Header: React.FC = () => {
               ))}
             </div>
             <div className="h-6 w-[1px] bg-white/10 mx-2"></div>
+            
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest px-2"
+            >
+              <Globe size={16} className="text-primary" />
+              {language === 'pl' ? 'EN' : 'PL'}
+            </button>
+
             <button
               type="button"
               onClick={handleBookingClick}
               className="px-6 py-2.5 bg-white text-black rounded-full text-sm font-black uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-xl"
             >
-              Konsultacja
+              {t.header.consultation}
             </button>
           </div>
 
-          <div className="flex md:hidden">
+          <div className="flex md:hidden items-center gap-4">
+            <button
+              onClick={toggleLanguage}
+              className="p-2 text-white hover:bg-white/10 rounded-xl transition-colors"
+            >
+              <Globe size={24} className="text-primary" />
+            </button>
             <button
               onClick={toggleMenu}
               type="button"
@@ -134,7 +153,7 @@ export const Header: React.FC = () => {
                   onClick={() => { handleBookingClick(); setIsMenuOpen(false); }}
                   className="w-full py-4 bg-white text-black rounded-2xl font-black uppercase tracking-widest"
               >
-                  Umów Rozmowę
+                  {t.header.bookCall}
               </button>
             </div>
           </div>
