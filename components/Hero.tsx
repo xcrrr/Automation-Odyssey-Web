@@ -32,20 +32,20 @@ export const Hero: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,212,255,0.08),transparent_70%)] pointer-events-none"></div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 mb-32">
+        <div className="flex flex-col items-center text-center gap-16 mb-32">
           
-          <div className={`w-full lg:w-3/5 text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`w-full lg:w-4/5 flex flex-col items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-8">
               Autonomia Biznesu • Szczecin
             </div>
             
-            <h1 className="text-white font-black leading-[1.05] mb-8 text-[clamp(2.5rem,7vw,6rem)] tracking-tighter">
-              TWOJA FIRMA NA<br />
-              <span className="gradient-text italic">AUTOPILOCIE.</span>
+            <h1 className="text-white font-black leading-[1.05] mb-8 text-[clamp(2.5rem,7vw,6rem)] tracking-tighter max-w-5xl">
+              TWOJA FIRMA W ERZE<br />
+              <span className="gradient-text italic">SUWERENNEGO AI.</span>
             </h1>
             
-            <p className="text-xl text-white/40 font-light leading-relaxed max-w-2xl mb-12">
-              Projektujemy, budujemy i wdrażamy systemy AI, które eliminują wąskie gardła. Oszczędzaj setki godzin miesięcznie dzięki technologii, która nie śpi.
+            <p className="text-xl text-white/40 font-light leading-relaxed max-w-3xl mb-12">
+              Projektujemy, budujemy i wdrażamy systemy AI, które eliminują wąskie gardła. Jako oficjalny partner AMD AI Developer Program, dostarczamy rozwiązania oparte na prywatnej i bezpiecznej infrastrukturze.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 mb-12">
@@ -63,9 +63,6 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className={`w-full lg:w-2/5 flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-             <QuantumCore />
-          </div>
         </div>
 
         {/* Product Grid */}
