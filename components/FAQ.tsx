@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { useLanguage } from '../src/LanguageContext';
+import { RevealOnScroll } from './RevealOnScroll';
 
 const FAQItem = ({ question, answer, index }: { question: string; answer: string; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,20 +51,24 @@ export const FAQ: React.FC = () => {
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
 
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="mb-16 text-center">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-primary/50" />
-            <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">{f.faqLabel}</span>
-            <div className="h-px w-8 bg-primary/50" />
+        <RevealOnScroll>
+          <div className="mb-16 text-center">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="h-px w-8 bg-primary/50" />
+              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">{f.faqLabel}</span>
+              <div className="h-px w-8 bg-primary/50" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white">
+              {f.heading} <span className="gradient-text italic">{f.headingAccent}</span>
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white">
-            {f.heading} <span className="gradient-text italic">{f.headingAccent}</span>
-          </h2>
-        </div>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-3">
           {f.items.map((item, i) => (
-            <FAQItem key={i} question={item.q} answer={item.a} index={i} />
+            <RevealOnScroll key={i} delay={i * 100}>
+              <FAQItem question={item.q} answer={item.a} index={i} />
+            </RevealOnScroll>
           ))}
         </div>
       </div>

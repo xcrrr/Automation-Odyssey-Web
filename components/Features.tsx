@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Bot, Zap, Target, BarChart3 } from 'lucide-react';
 import { useLanguage } from '../src/LanguageContext';
+import { RevealOnScroll } from './RevealOnScroll';
 
 const BentoCard = ({
   icon: Icon, title, description, accentColor, className = ''
@@ -76,26 +77,29 @@ export const Features: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-16 md:mb-24">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-primary/50" />
-            <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">{f.sectionLabel}</span>
+        <RevealOnScroll>
+          <div className="mb-16 md:mb-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-8 bg-primary/50" />
+              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">{f.sectionLabel}</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 text-white">
+              {f.heading} <span className="gradient-text">{f.headingAccent}</span>
+            </h2>
+            <p className="text-base md:text-xl text-white/40 max-w-2xl font-light">{f.subtitle}</p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black mb-6 text-white">
-            {f.heading} <span className="gradient-text">{f.headingAccent}</span>
-          </h2>
-          <p className="text-base md:text-xl text-white/40 max-w-2xl font-light">{f.subtitle}</p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {cards.map((c, i) => (
-            <BentoCard
-              key={i}
-              icon={c.icon}
-              title={c.title}
-              description={c.description}
-              accentColor={c.color}
-            />
+            <RevealOnScroll key={i} delay={i * 120}>
+              <BentoCard
+                icon={c.icon}
+                title={c.title}
+                description={c.description}
+                accentColor={c.color}
+              />
+            </RevealOnScroll>
           ))}
         </div>
       </div>
