@@ -1,6 +1,7 @@
 import React from 'react';
 import { Compass, Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { useLanguage } from '../src/LanguageContext';
+import { RevealOnScroll } from './RevealOnScroll';
 
 export const Footer: React.FC = () => {
   const { tr } = useLanguage();
@@ -13,7 +14,8 @@ export const Footer: React.FC = () => {
       <div className="absolute inset-0 perspective-grid opacity-30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+        <RevealOnScroll>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
 
           {/* Brand */}
           <div className="md:col-span-5">
@@ -102,6 +104,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
+        </RevealOnScroll>
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
