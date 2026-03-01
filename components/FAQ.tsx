@@ -1,54 +1,69 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
+import { useLanguage } from '../src/LanguageContext';
 
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+const FAQItem = ({ question, answer, index }: { question: string; answer: string; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const accent = index % 2 === 0 ? '#00d4ff' : '#6366f1';
 
   return (
-    <div className="border-b border-white/5 mb-4">
-      <button 
+    <div
+      className={`rounded-2xl border transition-all duration-500 overflow-hidden ${
+        isOpen ? 'border-primary/30 bg-white/[0.03]' : 'border-white/5 bg-white/[0.015] hover:border-white/10'
+      }`}
+      style={isOpen ? { boxShadow: `0 0 30px ${accent}10` } : {}}
+    >
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex justify-between items-center text-left hover:text-primary transition-colors"
+        className="w-full p-6 flex justify-between items-center text-left gap-6"
       >
-        <span className="text-lg md:text-xl font-bold text-white">{question}</span>
-        {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-xs font-bold flex-shrink-0 w-6 text-right" style={{ color: accent }}>
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <span className="text-base md:text-lg font-bold text-white">{question}</span>
+        </div>
+        <div
+          className="w-8 h-8 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-300"
+          style={isOpen ? { borderColor: accent, background: `${accent}15`, color: accent } : { borderColor: '#ffffff15', color: '#666' }}
+        >
+          {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+        </div>
       </button>
-      <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[500px] pb-6' : 'max-h-0'}`}>
-        <p className="text-white/50 leading-relaxed italic">{answer}</p>
+
+      <div className={`transition-all duration-500 ease-luxury overflow-hidden ${isOpen ? 'max-h-[400px]' : 'max-h-0'}`}>
+        <div className="pb-6 px-6 pl-16 md:pl-20">
+          <div className="h-px w-full mb-4 opacity-30" style={{ background: `linear-gradient(to right, ${accent}, transparent)` }} />
+          <p className="text-white/50 leading-relaxed text-sm md:text-base">{answer}</p>
+        </div>
       </div>
     </div>
   );
 };
 
 export const FAQ: React.FC = () => {
-  const faqs = [
-    {
-      question: "Czy to się opłaca małej firmie?",
-      answer: "Zdecydowanie. Nasze systemy kosztują ułamek pensji pracownika, a pracują 24/7. System Speed-to-Lead zwraca się zazwyczaj już przy pierwszym uratowanym leadzie, który inaczej poszedłby do konkurencji."
-    },
-    {
-      question: "Czy wystawiacie faktury VAT?",
-      answer: "Tak. Jako profesjonalna agencja działająca w ramach inkubatora przedsiębiorczości wystawiamy faktury VAT, które możesz wliczyć w koszty prowadzenia działalności."
-    },
-    {
-      question: "Czy muszę znać się na technologii?",
-      answer: "Absolutnie nie. My zajmujemy się wszystkim – od konfiguracji serwerów po pisanie skryptów rozmów. Ty otrzymujesz gotowy panel i powiadomienia o nowych klientach na telefon."
-    },
-    {
-      question: "Czy AI nie popsuje mojej reputacji?",
-      answer: "Wręcz przeciwnie. Nasze boty są zawsze uprzejme, nigdy nie zapominają o oddzwonieniu i zbierają tylko pozytywne opinie. W razie trudnych pytań system płynnie przekazuje kontakt do Ciebie."
-    }
-  ];
+  const { tr } = useLanguage();
+  const f = tr.faq;
 
   return (
-    <section id="faq" className="py-24 md:py-32 px-6 bg-[#020202]">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-black mb-16 text-white text-center">
-          Pytania i <span className="gradient-text italic">Odpowiedzi.</span>
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} {...faq} />
+    <section id="faq" className="py-24 md:py-32 px-6 bg-[#020202] relative overflow-hidden">
+      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="mb-16 text-center">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-primary/50" />
+            <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">{f.faqLabel}</span>
+            <div className="h-px w-8 bg-primary/50" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-white">
+            {f.heading} <span className="gradient-text italic">{f.headingAccent}</span>
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          {f.items.map((item, i) => (
+            <FAQItem key={i} question={item.q} answer={item.a} index={i} />
           ))}
         </div>
       </div>
