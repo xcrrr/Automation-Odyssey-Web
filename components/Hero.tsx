@@ -1,88 +1,212 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe, MessageSquare, Receipt, Users } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, ArrowRight, MessageSquare, Zap, CheckCircle2, Star } from 'lucide-react';
 import { QuantumCore } from './QuantumCore';
 
-const ProductCard = ({ icon: Icon, title, description, badge }: { icon: any, title: string, description: string, badge?: string }) => (
-  <div className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all group">
-    <div className="flex justify-between items-start mb-6">
-      <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center">
-        <Icon className="text-primary" size={24} />
+const useCountUp = (target: number, duration = 1800, startDelay = 0) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect(); } },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    const timer = setTimeout(() => {
+      let start: number | null = null;
+      const step = (ts: number) => {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * target));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, startDelay);
+    return () => clearTimeout(timer);
+  }, [started, target, duration, startDelay]);
+
+  return { count, ref };
+};
+
+const StatCard = ({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) => {
+  const { count, ref } = useCountUp(value, 1600, delay);
+  return (
+    <div ref={ref} className="flex flex-col items-center px-6 py-4 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur">
+      <div className="stat-number text-2xl md:text-3xl font-bold text-primary mb-1">
+        {count}{suffix}
       </div>
-      {badge && <span className="text-[10px] bg-primary/20 text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">{badge}</span>}
+      <div className="text-[10px] text-white/30 uppercase tracking-[0.25em] font-bold">{label}</div>
     </div>
-    <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
-    <p className="text-white/40 text-sm leading-relaxed">{description}</p>
+  );
+};
+
+const ProductCard = ({
+  icon: Icon, title, description, badge, accentColor
+}: { icon: React.ElementType; title: string; description: string; badge?: string; accentColor: string }) => (
+  <div className="card-neon-wrap group h-full">
+    <div className="card-neon-inner corner-bracket p-6 flex flex-col gap-4 h-full">
+      <div className="flex items-start justify-between">
+        <div
+          className="w-11 h-11 rounded-xl flex items-center justify-center border"
+          style={{ background: `${accentColor}15`, borderColor: `${accentColor}30` }}
+        >
+          <Icon size={20} style={{ color: accentColor }} />
+        </div>
+        {badge && (
+          <span
+            className="text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest border"
+            style={{ color: accentColor, background: `${accentColor}15`, borderColor: `${accentColor}30` }}
+          >
+            {badge}
+          </span>
+        )}
+      </div>
+      <div>
+        <h3 className="text-base font-bold text-white mb-2">{title}</h3>
+        <p className="text-white/40 text-sm leading-relaxed">{description}</p>
+      </div>
+      {/* Bottom accent line */}
+      <div className="mt-auto pt-3 border-t border-white/5">
+        <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: accentColor }}>
+          ▶ Dowiedz się więcej
+        </span>
+      </div>
+    </div>
   </div>
 );
 
 export const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const fullText = 'Projektujemy systemy AI, które eliminują wąskie gardła i zwiększają zysk Twojej firmy.';
 
   useEffect(() => {
-    setIsVisible(true);
+    const t = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (!isVisible) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      setTypedText(fullText.slice(0, i + 1));
+      i++;
+      if (i >= fullText.length) clearInterval(interval);
+    }, 28);
+    return () => clearInterval(interval);
+  }, [isVisible]);
+
   const handleBookingClick = () => {
-    window.open("https://cal.com/automationodyssey.pl/konsultacja-ai", "_blank");
+    window.open('https://cal.com/automationodyssey.pl/konsultacja-ai', '_blank');
   };
 
   return (
-    <section className="relative w-full bg-[#020202] pt-32 pb-32 overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,212,255,0.08),transparent_70%)] pointer-events-none"></div>
-      
+    <section className="relative w-full bg-[#020202] pt-28 pb-24 overflow-hidden">
+      {/* Top radial glow */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_50%_-10%,rgba(0,212,255,0.12),transparent_60%)] pointer-events-none" />
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center gap-16 mb-32">
-          
-          <div className={`w-full lg:w-4/5 flex flex-col items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-primary text-[10px] font-bold uppercase tracking-[0.4em] mb-8">
-              Autonomia Biznesu • Szczecin
+        {/* ── Main hero content ── */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          {/* Left column */}
+          <div className={`flex flex-col gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_6px_#00d4ff]" />
+              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.35em]">
+                AMD AI Partner · Szczecin
+              </span>
             </div>
-            
-            <h1 className="text-white font-black leading-[1.05] mb-8 text-[clamp(2.5rem,7vw,6rem)] tracking-tighter max-w-5xl">
-              TWOJA FIRMA W ERZE<br />
+
+            {/* Headline */}
+            <h1
+              className="text-white font-black leading-[1.0] text-[clamp(2.6rem,6.5vw,5.5rem)] tracking-tighter glitch"
+              data-text="TWOJA FIRMA W ERZE SUWERENNEGO AI."
+            >
+              TWOJA FIRMA<br />
+              W ERZE{' '}
               <span className="gradient-text italic">SUWERENNEGO AI.</span>
             </h1>
-            
-            <p className="text-xl text-white/40 font-light leading-relaxed max-w-3xl mb-12">
-              Projektujemy, budujemy i wdrażamy systemy AI, które eliminują wąskie gardła. Jako oficjalny partner AMD AI Developer Program, dostarczamy rozwiązania oparte na prywatnej i bezpiecznej infrastrukturze.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 mb-12">
-              <button 
-                  onClick={handleBookingClick} 
-                  className="btn-luxury px-12 py-5 text-lg"
-              >
+            {/* Typewriter subtitle */}
+            <div className="relative">
+              <p className="text-lg text-white/50 font-light leading-relaxed max-w-xl min-h-[3.5rem]">
+                {typedText}
+                <span className="inline-block w-0.5 h-5 bg-primary ml-0.5 align-middle animate-blink" />
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button onClick={handleBookingClick} className="btn-luxury px-10 py-4 text-base">
                 Rozpocznij Projekt
-                <ArrowRight size={20} className="ml-3" />
+                <ArrowRight size={18} className="ml-2" />
               </button>
-              <a href="tel:+48729086144" className="flex items-center justify-center gap-3 px-10 py-5 rounded-full border border-white/10 text-white font-bold text-sm uppercase tracking-widest hover:bg-white/5 transition-all">
-                <Phone size={18} className="text-primary" />
+              <a
+                href="tel:+48729086144"
+                className="btn-neon px-8 py-4 text-sm"
+              >
+                <Phone size={16} className="mr-2" />
                 AI Hotline
               </a>
             </div>
+
+            {/* Trust badges */}
+            <div className="flex items-center gap-6 pt-2">
+              <div className="flex items-center gap-1.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={12} className="text-primary fill-primary" />
+                ))}
+                <span className="text-white/30 text-xs ml-1.5">5.0 Google</span>
+              </div>
+              <div className="w-px h-4 bg-white/10" />
+              <span className="text-white/30 text-xs font-medium">Faktura VAT</span>
+              <div className="w-px h-4 bg-white/10" />
+              <span className="text-white/30 text-xs font-medium">24/7 SLA</span>
+            </div>
           </div>
 
+          {/* Right column – QuantumCore */}
+          <div className={`transition-all duration-1200 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <QuantumCore />
+          </div>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ProductCard 
+        {/* ── Stats bar ── */}
+        <div className={`grid grid-cols-3 gap-4 mb-24 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <StatCard value={24} suffix="/7" label="Praca Non-Stop" delay={300} />
+          <StatCard value={3} suffix="min" label="Odzew do Leada" delay={500} />
+          <StatCard value={40} suffix="%" label="Więcej Konwersji" delay={700} />
+        </div>
+
+        {/* ── Product cards ── */}
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <ProductCard
             icon={MessageSquare}
             title="Reaktywacja Bazy (DBR)"
-            description="Wyciągamy 'ukryte pieniądze' z Twoich starych leadów. System AI kontaktuje się z zapomnianymi klientami i generuje nowe zamówienia."
+            description="Wyciągamy 'ukryte pieniądze' z Twoich starych leadów. AI kontaktuje się z zapomnianymi klientami i generuje nowe zamówienia."
             badge="Najszybsze ROI"
+            accentColor="#00d4ff"
           />
-          <ProductCard 
+          <ProductCard
             icon={Zap}
             title="Błyskawiczny Kontakt"
             description="Nigdy więcej uciekających leadów. System AI oddzwania do klienta w 3 minuty po wysłaniu formularza, 24/7."
             badge="Speed-to-Lead"
+            accentColor="#6366f1"
           />
-          <ProductCard 
+          <ProductCard
             icon={CheckCircle2}
             title="Budowa Reputacji"
-            description="Automatycznie zbieraj opinie 5* w Google Maps od zadowolonych klientów i wyprzedź konkurencję w Szczecinie."
+            description="Automatycznie zbieraj opinie 5★ w Google Maps od zadowolonych klientów i wyprzedź konkurencję w Szczecinie."
+            accentColor="#ff006e"
           />
         </div>
       </div>
