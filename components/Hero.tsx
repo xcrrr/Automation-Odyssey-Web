@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Phone, ArrowRight, MessageSquare, Zap, CheckCircle2, Star } from 'lucide-react';
 import { QuantumCore } from './QuantumCore';
+import { useLanguage } from '../src/LanguageContext';
 
 const useCountUp = (target: number, duration = 1800, startDelay = 0) => {
   const [count, setCount] = useState(0);
@@ -35,7 +36,9 @@ const useCountUp = (target: number, duration = 1800, startDelay = 0) => {
   return { count, ref };
 };
 
-const StatCard = ({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) => {
+const StatCard = ({
+  value, suffix, label, delay
+}: { value: number; suffix: string; label: string; delay: number }) => {
   const { count, ref } = useCountUp(value, 1600, delay);
   return (
     <div ref={ref} className="flex flex-col items-center px-6 py-4 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur">
@@ -48,8 +51,11 @@ const StatCard = ({ value, suffix, label, delay }: { value: number; suffix: stri
 };
 
 const ProductCard = ({
-  icon: Icon, title, description, badge, accentColor
-}: { icon: React.ElementType; title: string; description: string; badge?: string; accentColor: string }) => (
+  icon: Icon, title, description, badge, accentColor, learnMore
+}: {
+  icon: React.ElementType; title: string; description: string;
+  badge?: string; accentColor: string; learnMore: string;
+}) => (
   <div className="card-neon-wrap group h-full">
     <div className="card-neon-inner corner-bracket p-6 flex flex-col gap-4 h-full">
       <div className="flex items-start justify-between">
@@ -72,10 +78,9 @@ const ProductCard = ({
         <h3 className="text-base font-bold text-white mb-2">{title}</h3>
         <p className="text-white/40 text-sm leading-relaxed">{description}</p>
       </div>
-      {/* Bottom accent line */}
       <div className="mt-auto pt-3 border-t border-white/5">
         <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: accentColor }}>
-          ▶ Dowiedz się więcej
+          ▶ {learnMore}
         </span>
       </div>
     </div>
@@ -83,9 +88,10 @@ const ProductCard = ({
 );
 
 export const Hero: React.FC = () => {
+  const { tr } = useLanguage();
+  const h = tr.hero;
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const fullText = 'Projektujemy systemy AI, które eliminują wąskie gardła i zwiększają zysk Twojej firmy.';
 
   useEffect(() => {
     const t = setTimeout(() => setIsVisible(true), 100);
@@ -93,15 +99,16 @@ export const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    setTypedText('');
     if (!isVisible) return;
     let i = 0;
     const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, i + 1));
+      setTypedText(h.subtitle.slice(0, i + 1));
       i++;
-      if (i >= fullText.length) clearInterval(interval);
+      if (i >= h.subtitle.length) clearInterval(interval);
     }, 28);
     return () => clearInterval(interval);
-  }, [isVisible]);
+  }, [isVisible, h.subtitle]);
 
   const handleBookingClick = () => {
     window.open('https://cal.com/automationodyssey.pl/konsultacja-ai', '_blank');
@@ -109,33 +116,24 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full bg-[#020202] pt-28 pb-24 overflow-hidden">
-      {/* Top radial glow */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_50%_-10%,rgba(0,212,255,0.12),transparent_60%)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* ── Main hero content ── */}
+        {/* Two-column layout */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-          {/* Left column */}
+          {/* Left */}
           <div className={`flex flex-col gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur">
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_6px_#00d4ff]" />
-              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.35em]">
-                AMD AI Partner · Szczecin
-              </span>
+              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.35em]">{h.badge}</span>
             </div>
 
-            {/* Headline */}
-            <h1
-              className="text-white font-black leading-[1.0] text-[clamp(2.6rem,6.5vw,5.5rem)] tracking-tighter glitch"
-              data-text="TWOJA FIRMA W ERZE SUWERENNEGO AI."
-            >
-              TWOJA FIRMA<br />
-              W ERZE{' '}
-              <span className="gradient-text italic">SUWERENNEGO AI.</span>
+            <h1 className="text-white font-black leading-[1.0] text-[clamp(2.6rem,6.5vw,5.5rem)] tracking-tighter glitch">
+              {h.headline1}<br />
+              {h.headline2}{' '}
+              <span className="gradient-text italic">{h.headline3}</span>
             </h1>
 
-            {/* Typewriter subtitle */}
             <div className="relative">
               <p className="text-lg text-white/50 font-light leading-relaxed max-w-xl min-h-[3.5rem]">
                 {typedText}
@@ -143,71 +141,49 @@ export const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={handleBookingClick} className="btn-luxury px-10 py-4 text-base">
-                Rozpocznij Projekt
+                {h.cta1}
                 <ArrowRight size={18} className="ml-2" />
               </button>
-              <a
-                href="tel:+48729086144"
-                className="btn-neon px-8 py-4 text-sm"
-              >
+              <a href="tel:+48729086144" className="btn-neon px-8 py-4 text-sm">
                 <Phone size={16} className="mr-2" />
-                AI Hotline
+                {h.cta2}
               </a>
             </div>
 
-            {/* Trust badges */}
             <div className="flex items-center gap-6 pt-2">
               <div className="flex items-center gap-1.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={12} className="text-primary fill-primary" />
                 ))}
-                <span className="text-white/30 text-xs ml-1.5">5.0 Google</span>
+                <span className="text-white/30 text-xs ml-1.5">{h.trustRating}</span>
               </div>
               <div className="w-px h-4 bg-white/10" />
-              <span className="text-white/30 text-xs font-medium">Faktura VAT</span>
+              <span className="text-white/30 text-xs font-medium">{h.trustInvoice}</span>
               <div className="w-px h-4 bg-white/10" />
-              <span className="text-white/30 text-xs font-medium">24/7 SLA</span>
+              <span className="text-white/30 text-xs font-medium">{h.trustSla}</span>
             </div>
           </div>
 
-          {/* Right column – QuantumCore */}
+          {/* Right – QuantumCore */}
           <div className={`transition-all duration-1200 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <QuantumCore />
           </div>
         </div>
 
-        {/* ── Stats bar ── */}
+        {/* Stats */}
         <div className={`grid grid-cols-3 gap-4 mb-24 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <StatCard value={24} suffix="/7" label="Praca Non-Stop" delay={300} />
-          <StatCard value={3} suffix="min" label="Odzew do Leada" delay={500} />
-          <StatCard value={40} suffix="%" label="Więcej Konwersji" delay={700} />
+          <StatCard value={h.stat1Value} suffix={h.stat1Suffix} label={h.stat1Label} delay={300} />
+          <StatCard value={h.stat2Value} suffix={h.stat2Suffix} label={h.stat2Label} delay={500} />
+          <StatCard value={h.stat3Value} suffix={h.stat3Suffix} label={h.stat3Label} delay={700} />
         </div>
 
-        {/* ── Product cards ── */}
+        {/* Product cards */}
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <ProductCard
-            icon={MessageSquare}
-            title="Reaktywacja Bazy (DBR)"
-            description="Wyciągamy 'ukryte pieniądze' z Twoich starych leadów. AI kontaktuje się z zapomnianymi klientami i generuje nowe zamówienia."
-            badge="Najszybsze ROI"
-            accentColor="#00d4ff"
-          />
-          <ProductCard
-            icon={Zap}
-            title="Błyskawiczny Kontakt"
-            description="Nigdy więcej uciekających leadów. System AI oddzwania do klienta w 3 minuty po wysłaniu formularza, 24/7."
-            badge="Speed-to-Lead"
-            accentColor="#6366f1"
-          />
-          <ProductCard
-            icon={CheckCircle2}
-            title="Budowa Reputacji"
-            description="Automatycznie zbieraj opinie 5★ w Google Maps od zadowolonych klientów i wyprzedź konkurencję w Szczecinie."
-            accentColor="#ff006e"
-          />
+          <ProductCard icon={MessageSquare} title={h.card1Title} description={h.card1Desc} badge={h.card1Badge} accentColor="#00d4ff" learnMore={h.learnMore} />
+          <ProductCard icon={Zap}          title={h.card2Title} description={h.card2Desc} badge={h.card2Badge} accentColor="#6366f1" learnMore={h.learnMore} />
+          <ProductCard icon={CheckCircle2} title={h.card3Title} description={h.card3Desc}                       accentColor="#ff006e" learnMore={h.learnMore} />
         </div>
       </div>
     </section>

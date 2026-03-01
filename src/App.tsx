@@ -9,6 +9,7 @@ import { ChatWidget } from '../components/ChatWidget';
 import { PrivacyPolicy, TermsOfService } from '../components/Legal';
 
 import { CelestialBackground } from '../components/CelestialBackground';
+import { LanguageProvider } from './LanguageContext';
 
 function App() {
   const [view, setView] = useState<'home' | 'privacy' | 'terms'>('home');
@@ -23,27 +24,29 @@ function App() {
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Initial check
+    handleHashChange();
 
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  if (view === 'privacy') return <PrivacyPolicy />;
-  if (view === 'terms') return <TermsOfService />;
+  if (view === 'privacy') return <LanguageProvider><PrivacyPolicy /></LanguageProvider>;
+  if (view === 'terms') return <LanguageProvider><TermsOfService /></LanguageProvider>;
 
   return (
-    <div className="font-sans antialiased text-white bg-dark selection:bg-primary selection:text-dark relative">
-      <CelestialBackground />
-      <Header />
-      <main className="relative z-10">
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <FAQ />
-      </main>
-      <ChatWidget />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="font-sans antialiased text-white bg-dark selection:bg-primary selection:text-dark relative">
+        <CelestialBackground />
+        <Header />
+        <main className="relative z-10">
+          <Hero />
+          <Features />
+          <HowItWorks />
+          <FAQ />
+        </main>
+        <ChatWidget />
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

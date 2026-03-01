@@ -48,7 +48,7 @@ export const QuantumCore: React.FC = () => {
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="absolute w-2 h-2 bg-secondary rounded-full shadow-[0_0_10px_#6366f1]"
-          style={{ animation: 'orbit 11s linear infinite reverse', transformOrigin: 'center', '--orbit-r': '90px' } as React.CSSProperties}
+          style={{ animation: 'orbit 11s linear infinite reverse', transformOrigin: 'center' }}
         />
       </div>
 
