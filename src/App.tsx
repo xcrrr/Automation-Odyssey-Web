@@ -5,7 +5,6 @@ import { Features } from '../components/Features';
 import { HowItWorks } from '../components/HowItWorks';
 import { FAQ } from '../components/FAQ';
 import { Footer } from '../components/Footer';
-import { ChatWidget } from '../components/ChatWidget';
 import { PrivacyPolicy, TermsOfService } from '../components/Legal';
 
 import { CelestialBackground } from '../components/CelestialBackground';
@@ -43,7 +42,6 @@ function App() {
           <HowItWorks />
           <FAQ />
         </main>
-        <ChatWidget />
         <Footer />
       </div>
     </LanguageProvider>
