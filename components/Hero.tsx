@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Phone, ArrowRight, MessageSquare, Zap, CheckCircle2, Star } from 'lucide-react';
 import { QuantumCore } from './QuantumCore';
 import { useLanguage } from '../src/LanguageContext';
@@ -90,25 +90,6 @@ const ProductCard = ({
 export const Hero: React.FC = () => {
   const { tr } = useLanguage();
   const h = tr.hero;
-  const [isVisible, setIsVisible] = useState(false);
-  const [typedText, setTypedText] = useState('');
-
-  useEffect(() => {
-    const t = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    setTypedText('');
-    if (!isVisible) return;
-    let i = 0;
-    const interval = setInterval(() => {
-      setTypedText(h.subtitle.slice(0, i + 1));
-      i++;
-      if (i >= h.subtitle.length) clearInterval(interval);
-    }, 28);
-    return () => clearInterval(interval);
-  }, [isVisible, h.subtitle]);
 
   const handleBookingClick = () => {
     window.open('https://cal.com/automationodyssey.pl/konsultacja-ai', '_blank');
@@ -122,7 +103,7 @@ export const Hero: React.FC = () => {
         {/* Two-column layout */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           {/* Left */}
-          <div className={`flex flex-col gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex flex-col gap-8 animate-hero-enter">
             <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur">
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_6px_#00d4ff]" />
               <span className="text-primary text-[10px] font-bold uppercase tracking-[0.35em]">{h.badge}</span>
@@ -135,9 +116,8 @@ export const Hero: React.FC = () => {
             </h1>
 
             <div className="relative">
-              <p className="text-lg text-white/50 font-light leading-relaxed max-w-xl min-h-[3.5rem]">
-                {typedText}
-                <span className="inline-block w-0.5 h-5 bg-primary ml-0.5 align-middle animate-blink" />
+              <p className="text-lg text-white/50 font-light leading-relaxed max-w-xl">
+                {h.subtitle}
               </p>
             </div>
 
@@ -167,20 +147,20 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right – QuantumCore */}
-          <div className={`transition-all duration-1200 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div className="animate-hero-enter-right">
             <QuantumCore />
           </div>
         </div>
 
         {/* Stats */}
-        <div className={`grid grid-cols-3 gap-4 mb-24 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="grid grid-cols-3 gap-4 mb-24 max-w-2xl mx-auto animate-hero-enter-delay">
           <StatCard value={h.stat1Value} suffix={h.stat1Suffix} label={h.stat1Label} delay={300} />
           <StatCard value={h.stat2Value} suffix={h.stat2Suffix} label={h.stat2Label} delay={500} />
           <StatCard value={h.stat3Value} suffix={h.stat3Suffix} label={h.stat3Label} delay={700} />
         </div>
 
         {/* Product cards */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-hero-enter-delay2">
           <ProductCard icon={MessageSquare} title={h.card1Title} description={h.card1Desc} badge={h.card1Badge} accentColor="#00d4ff" learnMore={h.learnMore} />
           <ProductCard icon={Zap}          title={h.card2Title} description={h.card2Desc} badge={h.card2Badge} accentColor="#6366f1" learnMore={h.learnMore} />
           <ProductCard icon={CheckCircle2} title={h.card3Title} description={h.card3Desc}                       accentColor="#ff006e" learnMore={h.learnMore} />

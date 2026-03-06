@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   const f = tr.footer;
 
   return (
-    <footer id="contact" className="bg-[#030308] pt-24 pb-12 border-t border-primary/10 relative overflow-hidden">
+    <footer id="contact" className="bg-[#030308] pt-24 pb-12 border-t border-primary/10 relative overflow-hidden z-10">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/[0.04] rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute inset-0 perspective-grid opacity-30 pointer-events-none" />
