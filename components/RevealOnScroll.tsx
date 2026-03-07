@@ -1,26 +1,34 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
   delay?: number;
 }
 
+const isInViewport = (el: HTMLElement): boolean => {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+};
+
 export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Synchronously check if the element is already in the viewport before
-  // the first paint so that above-the-fold content is never hidden.
-  useLayoutEffect(() => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setIsVisible(true);
-    }
-  }, []);
-
   useEffect(() => {
-    if (isVisible) return;
+    const el = ref.current;
+    if (!el) return;
+
+    // Already in viewport — reveal immediately without waiting for observer
+    if (isInViewport(el)) {
+      setIsVisible(true);
+      return;
+    }
+
+    // IntersectionObserver not supported — fall back to always visible
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,15 +37,12 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delay 
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px 0px 0px' }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, []);
 
   return (
     <div
